@@ -37,7 +37,11 @@ namespace GGJ.CK
             SINGLE,
             COLLECT,
             EQUIP,
-            READ
+            READ,
+            DESTROY,
+            OPEN,
+            CLOSE,
+            THROW
         }
         public USE MyUse = USE.UNSPECIFIED;
 

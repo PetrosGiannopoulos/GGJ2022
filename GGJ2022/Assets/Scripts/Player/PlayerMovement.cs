@@ -18,10 +18,11 @@ namespace GGJ.CK
         [SerializeField] private Transform _gCheck;
         [SerializeField] private float _gDistancel;
         [SerializeField] private LayerMask _gMask;
-
+        [SerializeField] private LayerMask _areaMask;
 
         Vector3 velocity;
         [SerializeField] bool _isGrounded;
+        [SerializeField] bool _isStepping;
         public Transform startPos;
         AudioSource audioStep;
 
@@ -46,8 +47,14 @@ namespace GGJ.CK
         {
             //Ground Check
             _isGrounded = Physics.CheckSphere(_gCheck.position , _gDistancel , _gMask);
+            _isStepping = Physics.CheckSphere(_gCheck.position, _gDistancel, _areaMask);
 
-            if(_isGrounded && velocity.y < 0)
+            if (_isStepping)
+            {
+                //to do interact area
+            }
+
+            if (_isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }
