@@ -6,7 +6,22 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass - Clear Fast
+    second: {fileID: 2100000, guid: 4fde15f7d7267f34c89ab1c149f9e3ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal - Stainless Steel
+    second: {fileID: 2100000, guid: 5fe5a6ebb7ffd57479483e767817001c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal - Steel
+    second: {fileID: 2100000, guid: 350bb750a74131b46b8042d1a0e2119f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
