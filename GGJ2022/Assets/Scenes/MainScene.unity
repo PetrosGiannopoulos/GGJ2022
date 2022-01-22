@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 27569157}
-  - component: {fileID: 27569156}
   m_Layer: 0
   m_Name: GeneralManager
   m_TagString: Untagged
@@ -140,18 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &27569156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27569155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb128e4b96eb4944bcc4854f4531704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &27569157
 Transform:
   m_ObjectHideFlags: 0
@@ -192,12 +179,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 93460892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7aeaeb13b848864eb85a58812aa702a, type: 3}
+  m_Script: {fileID: 11500000, guid: 595203f6b447ec94abbfd734d6887561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
   - name: LeftFoot
-    clip: {fileID: 8300000, guid: b34ede6aa7c414a44895636925c84f6c, type: 3}
+    clip: {fileID: 8300000, guid: c8255e60cab35fd479d4ac7c12229d5e, type: 3}
     volume: 1
     pitch: 1
     loop: 1

@@ -192,7 +192,8 @@ namespace StarterAssets
 			else {
 				walking = true;
 
-				if(AudioManager.instance.IsPlaying("LeftFoot")==false)AudioManager.instance.Play("LeftFoot");
+				if(AudioManager.instance.IsPlaying("LeftFoot")==false)
+					AudioManager.instance.Play("LeftFoot");
 			}
 		}
 
