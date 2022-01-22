@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+using GGJ.CK;
+public class Door: InteractableClass
 {
 
     public int side=0;
@@ -16,5 +17,23 @@ public class Door : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override void OnEnterInteraction()
+    {
+        base.OnEnterInteraction();
+
+        Debug.Log("Door Interaction");
+
+
+    }
+
+    public override void OnExitInteraction()
+    {
+        base.OnExitInteraction();
+
+        Debug.Log("Door Interaction");
+
+
     }
 }

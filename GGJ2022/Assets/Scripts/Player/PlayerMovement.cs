@@ -18,10 +18,11 @@ namespace GGJ.CK
         [SerializeField] private Transform _gCheck;
         [SerializeField] private float _gDistancel;
         [SerializeField] private LayerMask _gMask;
-
+        [SerializeField] private LayerMask _areaMask;
 
         Vector3 velocity;
         [SerializeField] bool _isGrounded;
+        [SerializeField] bool _isStepping;
         public Transform startPos;
         AudioSource audioStep;
 
@@ -47,7 +48,42 @@ namespace GGJ.CK
             //Ground Check
             _isGrounded = Physics.CheckSphere(_gCheck.position , _gDistancel , _gMask);
 
-            if(_isGrounded && velocity.y < 0)
+            bool wasStepping = _isStepping;
+
+            Collider[] stepColliders = Physics.OverlapSphere(_gCheck.position, _gDistancel, _areaMask);
+            
+            if (stepColliders.Length > 0) _isStepping = true;
+            else _isStepping = false;
+
+            if (_isStepping)
+            {
+                
+                if (wasStepping == false)
+                {
+                    //entered interact area
+                    Debug.Log("Stepping ON");
+                    foreach(Collider collider in stepColliders)
+                    {
+                       //collider.gameObject.GetComponent<InteractableClass>().OnEnterInteraction();
+                    }
+                }
+            }
+            else
+            {
+                if (wasStepping)
+                {
+                    //exit interact area
+                    Debug.Log("Exit Area");
+
+                    foreach (Collider collider in stepColliders)
+                    {
+                       // collider.gameObject.GetComponent<InteractableClass>().OnExitInteraction();
+
+                    }
+                }
+            }
+
+            if (_isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
             }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - DoorMainTrigger
+  - Crosshair1
+  - Crosshair
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Step
   - 
   - 
   - 

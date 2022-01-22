@@ -37,7 +37,11 @@ namespace GGJ.CK
             SINGLE,
             COLLECT,
             EQUIP,
-            READ
+            READ,
+            DESTROY,
+            OPEN,
+            CLOSE,
+            THROW
         }
         public USE MyUse = USE.UNSPECIFIED;
 
@@ -130,6 +134,16 @@ namespace GGJ.CK
             EventCaller();
             UsageFlow();
             //Debug.Log("#ItemBaseClass#Parrent call listener");
+        }
+
+        virtual public void OnEnterInteraction()
+        {
+
+        }
+
+        virtual public void OnExitInteraction()
+        {
+
         }
 
         protected void PlayOneShot(AudioClip sfx)

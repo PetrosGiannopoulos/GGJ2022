@@ -252,30 +252,31 @@ namespace GGJ.CK
 
             switch(interactable.MyUse)
             {
-                //case InteractableClass.USE.UNSPECIFIED:
-                //txt = Text_SimpleInteraction;
-                //break;
+                case InteractableClass.USE.UNSPECIFIED:
+                txt = Text_SimpleInteraction;
+                break;
 
-                //case InteractableClass.USE.SINGLE:
-                //if(interactable.myType == InteractableClass.TYPE.DOOR)
-                //{
-                //    Door door = interactable.GetComponent<Door>();
-                //    if(door.needkey)
-                //        txt = Text_DoorWithOutKey;
-                //    else
-                //        txt = Text_DoorWithKey;
-                //}
-                //else
-                //    txt = Text_SimpleInteraction;
-                //break;
+                case InteractableClass.USE.SINGLE:
+                if(interactable.myType == InteractableClass.TYPE.DOOR)
+                {
+                    Door door = interactable.GetComponent<Door>();
+                    /*if(door.needkey)
+                        txt = text_doorwithoutkey;
+                    else
+                        txt = text_doorwithkey;
+                    */
+                }
+                else
+                    txt = Text_SimpleInteraction;
+                break;
 
-                //case InteractableClass.USE.COLLECT:
-                //txt = Text_CollectableItem;
-                //break;
+                case InteractableClass.USE.COLLECT:
+                txt = Text_CollectableItem;
+                break;
 
-                //case InteractableClass.USE.EQUIP:
-                //txt = Text_EquipableItem;
-                //break;
+                case InteractableClass.USE.EQUIP:
+                txt = Text_EquipableItem;
+                break;
             }
 
             //else

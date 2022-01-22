@@ -54,7 +54,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8315725375412635354}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -139,7 +139,11 @@ MonoBehaviour:
   _gMask:
     serializedVersion: 2
     m_Bits: 256
+  _areaMask:
+    serializedVersion: 2
+    m_Bits: 0
   _isGrounded: 0
+  _isStepping: 0
   startPos: {fileID: 0}
 --- !u!82 &4699900865354010858
 AudioSource:
@@ -389,10 +393,11 @@ MonoBehaviour:
   _minDinstanceToInteract: 2
   interactable:
     serializedVersion: 2
-    m_Bits: 0
-  cursor: 0
+    m_Bits: 64
+  cursor: 2
+  crossHair: {fileID: 0}
   _interactionPanel: {fileID: 0}
-  RotationSpeed: 0
+  RotationSpeed: 100
   Text_SimpleInteraction: ' E Interact'
   Text_CollectableItem: Press E to pick up
   Text_EquipableItem: Press E to equip
