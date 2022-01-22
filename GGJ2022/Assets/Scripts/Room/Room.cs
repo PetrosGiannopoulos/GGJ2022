@@ -6,7 +6,8 @@ public class Room : MonoBehaviour
 {
     public GameObject gameManager;
     public int roomNumber, roomSanity;
-    public Transform spawnPoint;
+    public Transform spawnPoint, object1Point, object2Point, objectKeyPoint;
+    public GameObject object1, object2, objectKey;
 
     // Start is called before the first frame update
     void Start()
