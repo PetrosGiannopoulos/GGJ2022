@@ -19,9 +19,18 @@ public class Door: InteractableClass
         
     }
 
-    public override void OnInteraction()
+    public override void OnEnterInteraction()
     {
-        base.OnInteraction();
+        base.OnEnterInteraction();
+
+        Debug.Log("Door Interaction");
+
+
+    }
+
+    public override void OnExitInteraction()
+    {
+        base.OnExitInteraction();
 
         Debug.Log("Door Interaction");
 

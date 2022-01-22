@@ -47,11 +47,40 @@ namespace GGJ.CK
         {
             //Ground Check
             _isGrounded = Physics.CheckSphere(_gCheck.position , _gDistancel , _gMask);
-            _isStepping = Physics.CheckSphere(_gCheck.position, _gDistancel, _areaMask);
+
+            bool wasStepping = _isStepping;
+
+            Collider[] stepColliders = Physics.OverlapSphere(_gCheck.position, _gDistancel, _areaMask);
+            
+            if (stepColliders.Length > 0) _isStepping = true;
+            else _isStepping = false;
 
             if (_isStepping)
             {
-                //to do interact area
+                
+                if (wasStepping == false)
+                {
+                    //entered interact area
+                    Debug.Log("Stepping ON");
+                    foreach(Collider collider in stepColliders)
+                    {
+                       //collider.gameObject.GetComponent<InteractableClass>().OnEnterInteraction();
+                    }
+                }
+            }
+            else
+            {
+                if (wasStepping)
+                {
+                    //exit interact area
+                    Debug.Log("Exit Area");
+
+                    foreach (Collider collider in stepColliders)
+                    {
+                       // collider.gameObject.GetComponent<InteractableClass>().OnExitInteraction();
+
+                    }
+                }
             }
 
             if (_isGrounded && velocity.y < 0)

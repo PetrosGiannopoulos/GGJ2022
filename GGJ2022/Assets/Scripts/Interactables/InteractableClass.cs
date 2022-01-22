@@ -136,6 +136,16 @@ namespace GGJ.CK
             //Debug.Log("#ItemBaseClass#Parrent call listener");
         }
 
+        virtual public void OnEnterInteraction()
+        {
+
+        }
+
+        virtual public void OnExitInteraction()
+        {
+
+        }
+
         protected void PlayOneShot(AudioClip sfx)
         {
             if(sfx != null || inter_AudioSource != null)
