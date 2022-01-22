@@ -13,6 +13,11 @@ public class GameController : MonoBehaviour
         sanityMeter = 50;
     }
 
+    public void changeSanityLevel(int num)
+    {
+        sanityMeter += num;
+    }
+
     // Update is called once per frame
     void Update()
     {
