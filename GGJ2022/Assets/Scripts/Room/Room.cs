@@ -5,8 +5,8 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public int roomNumber, roomSanity;
-    public Transform spawnPoint, object1Point, object2Point, objectKeyPoint;
-    public GameObject object1, object2, objectKey;
+    public Transform spawnPoint, object1Point, object2Point, objectKeyPoint, objectDestroyerPoint;
+    public GameObject object1, object2, objectKey, objectDestroyer;
 
 
     private GameController gameController;
