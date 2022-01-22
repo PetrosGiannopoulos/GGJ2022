@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
+
+using System;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -72,6 +75,7 @@ namespace StarterAssets
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
+		bool walking = false;
 
 		private void Awake()
 		{
@@ -90,6 +94,8 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			
 		}
 
 		private void Update()
@@ -171,11 +177,32 @@ namespace StarterAssets
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+
+				
+
 			}
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+			if (_speed == 0) {
+				AudioManager.instance.Stop("LeftFoot");
+				walking = false;
+			}
+			else {
+				walking = true;
+
+				if(AudioManager.instance.IsPlaying("LeftFoot")==false)AudioManager.instance.Play("LeftFoot");
+			}
 		}
+
+		IEnumerator PlayFoot(float time)
+        {
+			yield return new WaitForSeconds(time);
+
+			AudioManager.instance.Play("LeftFoot");
+		}
+		
 
 		private void JumpAndGravity()
 		{
