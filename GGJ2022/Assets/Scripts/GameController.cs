@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
         if (!willReturnToMuseum)
         {
             museumPlayerTransform = player.transform;
-            return teleportLocations[nextRoomIndex];
+            return teleportLocations[nextRoomIndex-1];
         }
         else
         {
