@@ -1,3 +1,4 @@
+using GGJ.CK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class GameController : MonoBehaviour
         objectPicked = false;
         objectDestroyed = false;
         sanityMeter = 10;
+        
+
     }
 
     public void gameOver()
@@ -77,6 +80,10 @@ public class GameController : MonoBehaviour
     public void TeleportPlayer(bool returnToMuseum)
     {
         player.transform.position = GetNextRoom(returnToMuseum).position;
+
+        
+        AudioManager.instance.PlayFadeIn("MusicBoxChildRoom");
+        
     }
 
     public int GetSanity()
