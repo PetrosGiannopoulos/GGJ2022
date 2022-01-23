@@ -16,6 +16,7 @@ namespace GGJ.CK
     {
 
         GameController gameController;
+        DialogUI dialogUI;
         public enum TYPE
         {
             UNSPECIFIED,
@@ -69,6 +70,7 @@ namespace GGJ.CK
         private void Start()
         {
             gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+            dialogUI = GameObject.FindGameObjectWithTag("DialogUI").GetComponent<DialogUI>();
         }
 
         #region DefaultMethods
@@ -169,6 +171,20 @@ namespace GGJ.CK
             {
                 case "Belt":
                     gameController.pickObject();
+                    dialogUI.ClearDialogs();
+
+                    List<string> dialogChoices = new List<string>();
+
+                    
+                    dialogChoices.Add("1) Yes. Blah blah blah");
+                    dialogChoices.Add("2) No. Blah blah blah");
+
+                    
+                    //List<string> dialogChoices = gameController.GetDialogs();
+                    foreach (string s in dialogChoices)
+                    {
+                        dialogUI.AddDialogChoice(s);
+                    }
                     break;
                 default:
                     break;
