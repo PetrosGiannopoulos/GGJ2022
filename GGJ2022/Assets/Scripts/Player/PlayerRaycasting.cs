@@ -131,31 +131,31 @@ namespace GGJ.CK
                         InteractablePaperItem();
                     }
                 }
-                    if(distanceFromInteractable >= _minDinstanceToInteract)
-                    {
-                        //CursorState();
-                        HideInteractionPanel();
-                        hitInteractable = null;
-                    }
-                    #endregion
-                }
-                else if(_interactionPanel.activeInHierarchy)    //Raycast didnt detect any interactable layer
+                if(distanceFromInteractable >= _minDinstanceToInteract)
                 {
-                    //hitInteractable = null;
+                    //CursorState();
                     HideInteractionPanel();
-                }//close panel
-
-
-                if(!playerMovement.enabled)//holding readable item
-                {
-                    ShowInteractionPanel("Press Q To Drop");
-                    pickablePaperItem.transform.Rotate((Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime) , (Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime) , 0 , Space.Self);
-
+                    hitInteractable = null;
                 }
+                #endregion
+            }
+            else if(_interactionPanel.activeInHierarchy)    //Raycast didnt detect any interactable layer
+            {
+                //hitInteractable = null;
+                HideInteractionPanel();
+            }//close panel
 
-                CursorState();
+
+            if(!playerMovement.enabled)//holding readable item
+            {
+                ShowInteractionPanel("Press Q To Drop");
+                pickablePaperItem.transform.Rotate((Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime) , (Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime) , 0 , Space.Self);
 
             }
+
+            CursorState();
+
+        }
 
 
         private bool changeFocusCursor = false;
