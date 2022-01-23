@@ -71,6 +71,11 @@ namespace GGJ.CK
                 Debug.Log("Cannot find 'GameController' script");
             }
         }
+
+        public InteractableClass GetInteractable()
+        {
+            return hitInteractable;
+        }
         void Init()
         {
             playerMovement = this.transform.parent.gameObject.GetComponent<PlayerMovement>();
@@ -147,7 +152,7 @@ namespace GGJ.CK
                             hitInteractable.OnInteraction();
 
                         pickablePaperItem = hitInteractable.transform;
-                        InteractablePaperItem();
+                        //InteractablePaperItem();
                     }
                 }
                 if (distanceFromInteractable >= _minDinstanceToInteract)
@@ -169,6 +174,7 @@ namespace GGJ.CK
 
             if (!playerMovement.enabled)//holding readable item
             {
+                
                 ShowInteractionPanel("Press Q To Drop");
                 pickablePaperItem.transform.Rotate((Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime), (Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime), 0, Space.Self);
 
@@ -209,7 +215,7 @@ namespace GGJ.CK
 
         void InteractablePaperItem()
         {
-            return;
+            //return;
             if (Input.GetKeyDown(KeyCode.E) && playerMovement.enabled)
             {
                 cursor = CURSOR.HIDE;

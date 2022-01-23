@@ -127,6 +127,8 @@ namespace GGJ.CK
                 break;
                 case USE.EQUIP:
                 Debug.Log("#Interactable# equip Use !!");
+                //Debug.Log(gameObject.name);
+                PickupObject();
                 break;
 
                 case USE.READ:
@@ -158,6 +160,19 @@ namespace GGJ.CK
         virtual public void OnExitInteraction()
         {
 
+        }
+
+        public void PickupObject()
+        {
+            GameObject parentObj = gameObject.transform.parent.gameObject;
+            switch (parentObj.name)
+            {
+                case "Belt":
+                    gameController.pickObject();
+                    break;
+                default:
+                    break;
+            }
         }
 
         protected void PlayOneShot(AudioClip sfx)
