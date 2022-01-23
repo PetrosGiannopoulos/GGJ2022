@@ -19,7 +19,7 @@ public class RippleAnimation : MonoBehaviour
 
         videoPlayer.Prepare();
         videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
-
+        
         
         //videoPlayer.Play();
     }
@@ -39,6 +39,7 @@ public class RippleAnimation : MonoBehaviour
         if(videoPlayer.texture!=null)
         //Texture2D bumpTexture = source.texture;// toTexture2D(videoPlayer.targetTexture);
         GetComponent<Image>().material.SetTexture("_BumpMap", videoPlayer.texture);
+        GetComponent<Image>().material.renderQueue = 3000;
         //GetComponent<Image>().material.SetTexture("_ParallaxMap", videoPlayer.texture);
     }
 

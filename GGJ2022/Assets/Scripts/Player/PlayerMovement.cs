@@ -27,6 +27,8 @@ namespace GGJ.CK
         public Transform startPos;
         AudioSource audioStep;
 
+        bool isWalking = false;
+
         Collider currentCollider;
         private void Awake()
         {
@@ -41,7 +43,7 @@ namespace GGJ.CK
             //transform.position = startPos.position;
 
             //FindObjectOfType<PlayerMovement>().enabled = false;
-
+            
         }
 
         void Update()
@@ -112,12 +114,29 @@ namespace GGJ.CK
             velocity.y += _gravity * Time.deltaTime;
             _controller.Move(velocity * Time.deltaTime);
 
-            if(_controller.velocity.magnitude > 0.01f && !audioStep.isPlaying)
+            if (_controller.velocity.magnitude > 0.01f && !audioStep.isPlaying)
             {
-                audioStep.volume = Random.Range(0.6f , 1.0f);
-                audioStep.pitch = Random.Range(0.8f , 1.0f);
+                audioStep.volume = Random.Range(0.6f, 1.0f);
+                audioStep.pitch = Random.Range(0.8f, 1.0f);
                 audioStep.Play();
             }
+
+            if (move.magnitude < 0.1f)
+            {
+                isWalking = false;
+                AudioManager.instance.AbruptStop("LeftFoot");
+            }
+            else
+            {
+                if (isWalking == false)
+                {
+                    isWalking = true;
+                    AudioManager.instance.Play("LeftFoot");
+                    
+                }
+            }
+
+
         }
 
 

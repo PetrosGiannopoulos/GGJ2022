@@ -44,7 +44,10 @@ namespace GGJ.CK
 
         //Better - AudioManager.instance.Play();
         //Even Better - Make it a thread
-
+        public void Start()
+        {
+            Play("MainTheme");
+        }
         public void Play(string name)
         {
 
@@ -115,6 +118,40 @@ namespace GGJ.CK
 
         }
 
+        public void PlayFadeIn(string name)
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (!s.source.isPlaying) StartCoroutine(PlayGradually(s));
+        }
+
+        IEnumerator PlayGradually(Sound s)
+        {
+            float endVolume = s.volume;
+            float step = 0.01f;
+            s.volume = 0.1f;
+            s.source.volume = 0.1f;
+            s.source.Play();
+
+            int numberIter = (int)((float)endVolume / ((float)step));
+            /*for(int i = 0; i < numberIter; i++)
+            {
+                s.volume += step;
+                s.source.volume = s.volume;
+                yield return new WaitForSeconds(0.02f);
+            }*/
+
+            while (s.source.volume < 0.9f)
+            {
+                s.source.volume += step;
+                s.volume += step;
+                yield return new WaitForSeconds(0.02f);
+            }
+
+            s.volume = endVolume;
+            s.source.volume = endVolume;
+            
+        }
+
         public void SetVolume(float value , string name)
         {
             Sound s = Array.Find(sounds , sound => sound.name == name);
@@ -126,6 +163,20 @@ namespace GGJ.CK
             {
                 s.volume = value;
                 s.source.volume = value;
+            }
+        }
+
+        public void SetPitch(float value, string name)
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (s == null)
+            {
+                Debug.LogWarning($"Problem setting sound for: {s.name}");
+            }
+            else
+            {
+                s.pitch = value;
+                s.source.pitch = value;
             }
         }
 

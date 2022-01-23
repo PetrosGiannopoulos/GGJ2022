@@ -138,6 +138,8 @@ namespace GGJ.CK
                 break;
                 case USE.TELEPORT:
                     gameController.TeleportPlayer(false);
+                    AudioManager.instance.Stop("MainTheme");
+                    
                     break;
             }
         }
