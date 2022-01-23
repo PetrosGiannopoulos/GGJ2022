@@ -51,7 +51,7 @@ namespace GGJ.CK
 
         #endregion
         GameObject marioPainter = null;
-
+        GameController gameController;
         private void Awake()
         {
             Init();
@@ -60,6 +60,16 @@ namespace GGJ.CK
         void Start()
         {
             //Init();
+            GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+            if (gameControllerObject != null)
+            {
+                gameController = gameControllerObject.GetComponent<GameController>();
+                Debug.Log("Found");
+            }
+            if (gameController == null)
+            {
+                Debug.Log("Cannot find 'GameController' script");
+            }
         }
         void Init()
         {
@@ -290,7 +300,7 @@ namespace GGJ.CK
                     txt = Text_EquipableItem;
                     break;
                 case InteractableClass.USE.TELEPORT:
-
+                    gameController.TeleportPlayer(false);
                     break;
                     
             }
