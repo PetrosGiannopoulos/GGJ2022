@@ -12,28 +12,68 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: GLASS___CLEAR_FAST
+    second: {fileID: 2100000, guid: b9a90dd992575ed4ca6a8574eddcf2f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: METAL___ALUMINIUM
-    second: {fileID: 2100000, guid: 68ec859fd7c21984ba8821c512228cc7, type: 2}
+    second: {fileID: 2100000, guid: 6025a6381ac2ac54183d77bee0defaac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: METAL___IRON
-    second: {fileID: 2100000, guid: 68ec859fd7c21984ba8821c512228cc7, type: 2}
+    second: {fileID: 2100000, guid: 964f42e40d23b3845b6bf433768a8131, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: METAL___STAINLESS_STEEL
+    second: {fileID: 2100000, guid: b9e45ea3eacddb048bb838300dac2d6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: METAL___ZINC
+    second: {fileID: 2100000, guid: e784de2013d38ba41b1026d9823a42d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PAINT___GLOSSY_WHITE
+    second: {fileID: 2100000, guid: eed87adb0b0344a4b85ed0bee486ad8f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: PAINT___GOLDEN_OCHRE
-    second: {fileID: 2100000, guid: 718ef596ed653904898b4369aa31cf96, type: 2}
+    second: {fileID: 2100000, guid: 7dcb8d5a2f9cf054e8f6362d00f6fe59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PAINT___LIGHT_GRAY
+    second: {fileID: 2100000, guid: 99a09ff008c41ef4cab48c6b813bb81d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PAINT___SAND_BEIGE
+    second: {fileID: 2100000, guid: 06c1eb3a3feb08848a4433e6c7526039, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PLASTIC___LAMINATE
+    second: {fileID: 2100000, guid: a7fbbc6fa24b12c43a839b8e4ad9550a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: STUCCO___WHITE_FINE
+    second: {fileID: 2100000, guid: d819450a21fbdca4d9d341ed8a59f9ec, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: WOOD___PINE_GRAINED_HORIZONTAL
-    second: {fileID: 2100000, guid: 19b8388424592e94c901066b3190a956, type: 2}
+    second: {fileID: 2100000, guid: 95b8012de6ec5554fa8404463297bb85, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: WOOD___WALNUT_HORIZONTAL
-    second: {fileID: 2100000, guid: 19b8388424592e94c901066b3190a956, type: 2}
+    second: {fileID: 2100000, guid: 4df7e276ede95144e8b3d1f873bd17fb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
