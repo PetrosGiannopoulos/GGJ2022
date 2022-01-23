@@ -20,7 +20,7 @@ namespace GGJ.CK
         public LayerMask interactable;
         RaycastHit hit;
 
-
+        public bool teleportReady = false;
         public enum CURSOR
         {
             DEFAULT,
@@ -300,7 +300,9 @@ namespace GGJ.CK
                     txt = Text_EquipableItem;
                     break;
                 case InteractableClass.USE.TELEPORT:
-                    gameController.TeleportPlayer(false);
+                    txt = Text_SimpleInteraction;
+                    
+                    teleportReady = true;
                     break;
                     
             }
@@ -314,6 +316,8 @@ namespace GGJ.CK
         {
             interactionTxt.text = "";
             _interactionPanel.gameObject.SetActive(false);
+
+            teleportReady = false;
         }
 
 

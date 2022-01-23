@@ -14,6 +14,8 @@ namespace GGJ.CK
     [RequireComponent(typeof(AudioSource))]
     public class InteractableClass : MonoBehaviour
     {
+
+        GameController gameController;
         public enum TYPE
         {
             UNSPECIFIED,
@@ -64,11 +66,18 @@ namespace GGJ.CK
             //gameObject.layer = itemLayer;
         }
 
+        private void Start()
+        {
+            gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        }
+
         #region DefaultMethods
         void Init()
         {
             inter_AudioSource = GetComponent<AudioSource>();
             //AddListener();
+
+
         }
 
         void OnEnable()
@@ -123,6 +132,9 @@ namespace GGJ.CK
                 case USE.READ:
                 Debug.Log("#Interactable# read Use !!");
                 break;
+                case USE.TELEPORT:
+                    gameController.TeleportPlayer(false);
+                    break;
             }
         }
 
