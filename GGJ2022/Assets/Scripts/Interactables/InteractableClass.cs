@@ -22,7 +22,8 @@ namespace GGJ.CK
             ARTIFACT,
             COLLECTOR,
             PAPPER,
-            TORCHE
+            TORCHE,
+            TELEPORTATION
         }
         public TYPE myType = TYPE.UNSPECIFIED;
 
@@ -41,7 +42,8 @@ namespace GGJ.CK
             DESTROY,
             OPEN,
             CLOSE,
-            THROW
+            THROW,
+            TELEPORT
         }
         public USE MyUse = USE.UNSPECIFIED;
 
