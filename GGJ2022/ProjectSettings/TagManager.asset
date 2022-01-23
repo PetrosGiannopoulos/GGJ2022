@@ -11,6 +11,7 @@ TagManager:
   - PaintingTrigger
   - MarioEffect
   - PickupTrigger
+  - DialogUI
   layers:
   - Default
   - TransparentFX
