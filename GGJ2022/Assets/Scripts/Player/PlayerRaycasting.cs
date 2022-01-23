@@ -20,7 +20,7 @@ namespace GGJ.CK
         public LayerMask interactable;
         RaycastHit hit;
 
-
+        public bool teleportReady = false;
         public enum CURSOR
         {
             DEFAULT,
@@ -70,6 +70,11 @@ namespace GGJ.CK
             {
                 Debug.Log("Cannot find 'GameController' script");
             }
+        }
+
+        public InteractableClass GetInteractable()
+        {
+            return hitInteractable;
         }
         void Init()
         {
@@ -147,7 +152,7 @@ namespace GGJ.CK
                             hitInteractable.OnInteraction();
 
                         pickablePaperItem = hitInteractable.transform;
-                        InteractablePaperItem();
+                        //InteractablePaperItem();
                     }
                 }
                 if (distanceFromInteractable >= _minDinstanceToInteract)
@@ -169,6 +174,7 @@ namespace GGJ.CK
 
             if (!playerMovement.enabled)//holding readable item
             {
+                
                 ShowInteractionPanel("Press Q To Drop");
                 pickablePaperItem.transform.Rotate((Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime), (Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime), 0, Space.Self);
 
@@ -209,7 +215,7 @@ namespace GGJ.CK
 
         void InteractablePaperItem()
         {
-            return;
+            //return;
             if (Input.GetKeyDown(KeyCode.E) && playerMovement.enabled)
             {
                 cursor = CURSOR.HIDE;
@@ -300,7 +306,9 @@ namespace GGJ.CK
                     txt = Text_EquipableItem;
                     break;
                 case InteractableClass.USE.TELEPORT:
-                    gameController.TeleportPlayer(false);
+                    txt = Text_SimpleInteraction;
+                    
+                    teleportReady = true;
                     break;
                     
             }
@@ -314,6 +322,8 @@ namespace GGJ.CK
         {
             interactionTxt.text = "";
             _interactionPanel.gameObject.SetActive(false);
+
+            teleportReady = false;
         }
 
 

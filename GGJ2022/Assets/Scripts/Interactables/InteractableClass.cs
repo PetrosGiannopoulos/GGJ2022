@@ -14,6 +14,8 @@ namespace GGJ.CK
     [RequireComponent(typeof(AudioSource))]
     public class InteractableClass : MonoBehaviour
     {
+
+        GameController gameController;
         public enum TYPE
         {
             UNSPECIFIED,
@@ -64,11 +66,18 @@ namespace GGJ.CK
             //gameObject.layer = itemLayer;
         }
 
+        private void Start()
+        {
+            gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        }
+
         #region DefaultMethods
         void Init()
         {
             inter_AudioSource = GetComponent<AudioSource>();
             //AddListener();
+
+
         }
 
         void OnEnable()
@@ -118,11 +127,16 @@ namespace GGJ.CK
                 break;
                 case USE.EQUIP:
                 Debug.Log("#Interactable# equip Use !!");
+                //Debug.Log(gameObject.name);
+                PickupObject();
                 break;
 
                 case USE.READ:
                 Debug.Log("#Interactable# read Use !!");
                 break;
+                case USE.TELEPORT:
+                    gameController.TeleportPlayer(false);
+                    break;
             }
         }
 
@@ -146,6 +160,19 @@ namespace GGJ.CK
         virtual public void OnExitInteraction()
         {
 
+        }
+
+        public void PickupObject()
+        {
+            GameObject parentObj = gameObject.transform.parent.gameObject;
+            switch (parentObj.name)
+            {
+                case "Belt":
+                    gameController.pickObject();
+                    break;
+                default:
+                    break;
+            }
         }
 
         protected void PlayOneShot(AudioClip sfx)
