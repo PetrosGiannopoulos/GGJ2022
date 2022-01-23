@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace GGJ.CK
@@ -26,7 +27,7 @@ namespace GGJ.CK
         public Transform startPos;
         AudioSource audioStep;
 
-
+        Collider currentCollider;
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
@@ -52,6 +53,8 @@ namespace GGJ.CK
 
             Collider[] stepColliders = Physics.OverlapSphere(_gCheck.position, _gDistancel, _areaMask);
             
+
+
             if (stepColliders.Length > 0) _isStepping = true;
             else _isStepping = false;
 
@@ -64,7 +67,13 @@ namespace GGJ.CK
                     Debug.Log("Stepping ON");
                     foreach(Collider collider in stepColliders)
                     {
-                       //collider.gameObject.GetComponent<InteractableClass>().OnEnterInteraction();
+
+                        if (collider.gameObject.tag.Equals("DoorMainTrigger"))
+                        {
+                            collider.gameObject.transform.parent.gameObject.GetComponent<Animator>().Play("OpenDoor");
+                            currentCollider = collider;
+                        }
+                        
                     }
                 }
             }
@@ -75,11 +84,14 @@ namespace GGJ.CK
                     //exit interact area
                     Debug.Log("Exit Area");
 
-                    foreach (Collider collider in stepColliders)
-                    {
-                       // collider.gameObject.GetComponent<InteractableClass>().OnExitInteraction();
+                   if (currentCollider.gameObject.tag.Equals("DoorMainTrigger")){
+                            Debug.Log("Close Door");
+                            currentCollider.gameObject.transform.parent.gameObject.GetComponent<Animator>().Play("CloseDoor");
+                       
+                        // collider.gameObject.GetComponent<InteractableClass>().OnExitInteraction();
 
                     }
+                   
                 }
             }
 

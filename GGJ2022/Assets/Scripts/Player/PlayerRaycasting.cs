@@ -12,8 +12,8 @@ namespace GGJ.CK
     {
         #region Members
         [Header("Camera Look")]
-        [SerializeField] [Range(2 , 8)] private float _maxDistanceToSee = 6;
-        [SerializeField] [Range(0.5f , 4)] private float _minDinstanceToInteract = 2;
+        [SerializeField] [Range(2, 8)] private float _maxDistanceToSee = 6;
+        [SerializeField] [Range(0.5f, 4)] private float _minDinstanceToInteract = 2;
         float distanceFromInteractable; //distance transform - target.tranmsform
 
         [Space]
@@ -50,7 +50,7 @@ namespace GGJ.CK
         public float RotationSpeed;
 
         #endregion
-
+        GameObject marioPainter = null;
 
         private void Awake()
         {
@@ -69,7 +69,7 @@ namespace GGJ.CK
             //Find cursor
             cursor = CURSOR.DEFAULT;
 
-            if(_interactionPanel != null)
+            if (_interactionPanel != null)
                 interactionTxt = _interactionPanel.transform.GetChild(0).GetComponent<Text>();
 
             //Define LayerMask
@@ -91,8 +91,8 @@ namespace GGJ.CK
         {
 #if UNITY_EDITOR
             //editor mode
-            Debug.DrawRay(this.transform.position , this.transform.forward * _maxDistanceToSee , Color.magenta);    //view distance
-            Debug.DrawRay(this.transform.position , this.transform.forward * _minDinstanceToInteract , Color.yellow);   //interaction distance
+            Debug.DrawRay(this.transform.position, this.transform.forward * _maxDistanceToSee, Color.magenta);    //view distance
+            Debug.DrawRay(this.transform.position, this.transform.forward * _minDinstanceToInteract, Color.yellow);   //interaction distance
 #endif
             //Resize mouse
             cursor = CURSOR.DEFAULT;
@@ -102,60 +102,71 @@ namespace GGJ.CK
 
             //If object is in range (distanceToSee) : get whatIHit as output => activate interaction panel
             //if is close enough (minDistance) : let him pick it up<E>
-            if(Physics.Raycast(this.transform.position , this.transform.forward , out hit , _maxDistanceToSee , interactable))
+            if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, _maxDistanceToSee, interactable))
             {
                 #region OnInteractableHitLogic
                 //does hit interactable layer and interactableClass?
-                if(hit.collider.gameObject.GetComponent<InteractableClass>())
+                if (hit.collider.gameObject.GetComponent<InteractableClass>())
                 {
                     cursor = CURSOR.FOCUS;
 
-                    distanceFromInteractable = Vector3.Distance(transform.position , hit.transform.position);
+                    distanceFromInteractable = Vector3.Distance(transform.position, hit.transform.position);
 
-                    if(distanceFromInteractable <= _minDinstanceToInteract)
+                    if (distanceFromInteractable <= _minDinstanceToInteract)
                     {
                         //if isnt null
-                        if(!hitInteractable) //block the code from execute all this over and over, run this only once !
+                        if (!hitInteractable) //block the code from execute all this over and over, run this only once !
                         {
                             Debug.Log("check hit");
                             hitInteractable = hit.collider.gameObject.GetComponent<InteractableClass>();
-                            ShowInteractionPanel("" , hitInteractable);
+                            ShowInteractionPanel("", hitInteractable);
+                            GameObject parentObj = hit.collider.gameObject.transform.parent.gameObject;
+                            
+                            for(int i = 0; i < parentObj.transform.childCount; i++)
+                            {
+                                GameObject childGO = parentObj.transform.GetChild(i).gameObject;
+                                if (childGO.tag.Equals("MarioEffect")) marioPainter = childGO.transform.GetChild(0).gameObject;
+                            }
+
+                            if (marioPainter) marioPainter.GetComponent<Image>().enabled = true;
                             return;
                         }
 
                         //else
-                        if(Input.GetKeyDown(KeyCode.E))
+                        if (Input.GetKeyDown(KeyCode.E))
                             hitInteractable.OnInteraction();
 
                         pickablePaperItem = hitInteractable.transform;
                         InteractablePaperItem();
                     }
                 }
-                    if(distanceFromInteractable >= _minDinstanceToInteract)
-                    {
-                        //CursorState();
-                        HideInteractionPanel();
-                        hitInteractable = null;
-                    }
-                    #endregion
-                }
-                else if(_interactionPanel.activeInHierarchy)    //Raycast didnt detect any interactable layer
+                if (distanceFromInteractable >= _minDinstanceToInteract)
                 {
-                    //hitInteractable = null;
+                    //CursorState();
                     HideInteractionPanel();
-                }//close panel
-
-
-                if(!playerMovement.enabled)//holding readable item
-                {
-                    ShowInteractionPanel("Press Q To Drop");
-                    pickablePaperItem.transform.Rotate((Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime) , (Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime) , 0 , Space.Self);
-
+                    if (marioPainter) marioPainter.GetComponent<Image>().enabled = false;
+                    hitInteractable = null;
                 }
+                #endregion
+            }
+            else if (_interactionPanel.activeInHierarchy)    //Raycast didnt detect any interactable layer
+            {
+                //hitInteractable = null;
+                HideInteractionPanel();
+                
+            }//close panel
 
-                CursorState();
+
+            if (!playerMovement.enabled)//holding readable item
+            {
+                ShowInteractionPanel("Press Q To Drop");
+                pickablePaperItem.transform.Rotate((Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime), (Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime), 0, Space.Self);
 
             }
+
+            CursorState();
+
+        }
 
 
         private bool changeFocusCursor = false;
@@ -166,21 +177,21 @@ namespace GGJ.CK
             //    return;
 
             changeFocusCursor = false;
-            switch(cursor)
+            switch (cursor)
             {
                 case CURSOR.DEFAULT:
-                crossHair.color = Color.white;
-                crossHair.transform.localScale = new Vector3(0.1f , 0.1f , 0.1f);
-                crossHair.gameObject.SetActive(true);
-                break;
+                    crossHair.color = Color.white;
+                    crossHair.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    crossHair.gameObject.SetActive(true);
+                    break;
                 case CURSOR.FOCUS:
-                crossHair.color = Color.red;
-                crossHair.transform.localScale = new Vector3(0.2f , 0.2f , 0.2f);
-                crossHair.gameObject.SetActive(true);
-                break;
+                    crossHair.color = Color.red;
+                    crossHair.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    crossHair.gameObject.SetActive(true);
+                    break;
                 case CURSOR.HIDE:
-                crossHair.gameObject.SetActive(false);
-                break;
+                    crossHair.gameObject.SetActive(false);
+                    break;
             }
         }
 
@@ -188,16 +199,17 @@ namespace GGJ.CK
 
         void InteractablePaperItem()
         {
-            if(Input.GetKeyDown(KeyCode.E) && playerMovement.enabled)
+            return;
+            if (Input.GetKeyDown(KeyCode.E) && playerMovement.enabled)
             {
                 cursor = CURSOR.HIDE;
 
                 pickablePaperItem = hit.transform;
                 itemOriginPos = pickablePaperItem.position;
                 itemOriginRot = pickablePaperItem.rotation;
-                pickablePaperItem.transform.LookAt(this.transform , Vector3.up);
+                pickablePaperItem.transform.LookAt(this.transform, Vector3.up);
                 pickablePaperItem.transform.parent = this.transform;
-                pickablePaperItem.transform.localPosition = new Vector3(0 , 0 , 0.7f);
+                pickablePaperItem.transform.localPosition = new Vector3(0, 0, 0.7f);
                 playerMovement.enabled = false;
 
 
@@ -207,7 +219,7 @@ namespace GGJ.CK
         }
         void DropPaperItem()
         {
-            if(Input.GetKeyDown(KeyCode.Q) && !playerMovement.enabled)
+            if (Input.GetKeyDown(KeyCode.Q) && !playerMovement.enabled)
             {
                 cursor = CURSOR.DEFAULT;
 
@@ -238,45 +250,49 @@ namespace GGJ.CK
         [SerializeField] private string Text_DropItem = "Press Q to drop item";
         [SerializeField] private string Text_PlaceItem = "Press E to place item";
 
-        void ShowInteractionPanel(string txt = " E Interact" , InteractableClass interactable = null)
+        void ShowInteractionPanel(string txt = " E Interact", InteractableClass interactable = null)
         {
             //Editor only
 
 #if UNITY_EDITOR
-            if(_interactionPanel == null)
+            if (_interactionPanel == null)
             {
                 Debug.LogError("Interaction Panel is missing idiotaaa");
                 return;
             }
 #endif
 
-            switch(interactable.MyUse)
+            switch (interactable.MyUse)
             {
                 case InteractableClass.USE.UNSPECIFIED:
-                txt = Text_SimpleInteraction;
-                break;
+                    txt = Text_SimpleInteraction;
+                    break;
 
                 case InteractableClass.USE.SINGLE:
-                if(interactable.myType == InteractableClass.TYPE.DOOR)
-                {
-                    Door door = interactable.GetComponent<Door>();
-                    /*if(door.needkey)
-                        txt = text_doorwithoutkey;
+                    if (interactable.myType == InteractableClass.TYPE.DOOR)
+                    {
+                        Door door = interactable.GetComponent<Door>();
+                        /*if(door.needkey)
+                            txt = text_doorwithoutkey;
+                        else
+                            txt = text_doorwithkey;
+                        */
+                    }
                     else
-                        txt = text_doorwithkey;
-                    */
-                }
-                else
-                    txt = Text_SimpleInteraction;
-                break;
+                        txt = Text_SimpleInteraction;
+                    break;
 
                 case InteractableClass.USE.COLLECT:
-                txt = Text_CollectableItem;
-                break;
+                    txt = Text_CollectableItem;
+                    break;
 
                 case InteractableClass.USE.EQUIP:
-                txt = Text_EquipableItem;
-                break;
+                    txt = Text_EquipableItem;
+                    break;
+                case InteractableClass.USE.TELEPORT:
+
+                    break;
+                    
             }
 
             //else

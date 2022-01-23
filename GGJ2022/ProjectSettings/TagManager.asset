@@ -8,6 +8,8 @@ TagManager:
   - DoorMainTrigger
   - Crosshair1
   - Crosshair
+  - PaintingTrigger
+  - MarioEffect
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Step
-  - 
+  - Interactable
   - 
   - 
   - 
