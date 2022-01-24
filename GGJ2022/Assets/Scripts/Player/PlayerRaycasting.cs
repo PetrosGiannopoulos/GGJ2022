@@ -119,19 +119,22 @@ namespace GGJ.CK
             //if is close enough (minDistance) : let him pick it up<E>
             if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, _maxDistanceToSee, interactable))
             {
+                
                 #region OnInteractableHitLogic
                 //does hit interactable layer and interactableClass?
                 if (hit.collider.gameObject.GetComponent<InteractableClass>())
                 {
                     cursor = CURSOR.FOCUS;
 
-                    distanceFromInteractable = Vector3.Distance(transform.position, hit.transform.position);
+                    //distanceFromInteractable = Vector3.Distance(transform.position, hit.transform.position);
+                    distanceFromInteractable = Vector3.Distance(transform.position, hit.point);
 
                     if (distanceFromInteractable <= _minDinstanceToInteract)
                     {
                         //if isnt null
-                        if (!hitInteractable) //block the code from execute all this over and over, run this only once !
+                        if(!hitInteractable) //block the code from execute all this over and over, run this only once !
                         {
+                            
                             Debug.Log("check hit");
                             hitInteractable = hit.collider.gameObject.GetComponent<InteractableClass>();
                             ShowInteractionPanel("", hitInteractable);

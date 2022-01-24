@@ -10,17 +10,19 @@ public class DialogUI : MonoBehaviour
     public GameObject dialogTextPrefab;
     List<GameObject> dialogTextObjs = new List<GameObject>();
     private int selectionIndex = 0;
+    bool isKeyReset = false;
     // Start is called before the first frame update
     void Start()
     {
         //AddDialogChoice("Whatever Dialog");
+
     }
 
     public void AddDialogChoice(string dialogText)
     {
         if (dialogTextObjs.Count >= 2) ClearDialogs();
 
-        var dialog = Instantiate(dialogTextPrefab,transform);
+        var dialog = Instantiate(dialogTextPrefab, transform);
 
         GameObject dialogTextObj = dialog.transform.GetChild(0).gameObject;
         dialogTextObj.GetComponent<TextMeshProUGUI>().text = dialogText;
@@ -28,6 +30,18 @@ public class DialogUI : MonoBehaviour
         if (dialogTextObjs.Count == 0) dialogTextObj.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
 
         dialogTextObjs.Add(dialog);
+    }
+
+    public void ResetKeyState()
+    {
+        StartCoroutine(delayResetKey());
+    }
+
+    IEnumerator delayResetKey()
+    {
+        yield return new WaitForEndOfFrame();
+
+        isKeyReset = true;
     }
 
     public void SetSelection(int index)
@@ -40,7 +54,7 @@ public class DialogUI : MonoBehaviour
 
     public void DeselectDialogs()
     {
-        foreach(GameObject go in dialogTextObjs)
+        foreach (GameObject go in dialogTextObjs)
         {
             go.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().enabled = false;
         }
@@ -63,5 +77,22 @@ public class DialogUI : MonoBehaviour
         {
             SetSelection(1);
         }
+
+
+        if (Input.GetKeyDown(KeyCode.E) && isKeyReset)
+        {
+            //Close Dialog and Implement Choice Result
+            Debug.Log(selectionIndex);
+            ClearDialogs();
+            isKeyReset = false;
+
+            ImplementChoice();
+
+        }
+    }
+
+    private void ImplementChoice()
+    {
+
     }
 }
