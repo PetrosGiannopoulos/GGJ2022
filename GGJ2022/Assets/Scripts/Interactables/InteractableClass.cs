@@ -137,9 +137,18 @@ namespace GGJ.CK
                 Debug.Log("#Interactable# read Use !!");
                 break;
                 case USE.TELEPORT:
+                    if (!gameController.willReturnToMuseum)
+                    {
+                        gameController.returnSong();
+                        AudioManager.instance.Stop("MainTheme");
+                        AudioManager.instance.PlayFadeIn(gameController.song);
+                    }
+                    else
+                    {
+                        AudioManager.instance.Stop(gameController.song);
+                        AudioManager.instance.PlayFadeIn("MainTheme");
+                    }
                     gameController.TeleportPlayer();
-                    AudioManager.instance.Stop("MainTheme");
-                    
                     break;
             }
         }

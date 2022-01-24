@@ -7,12 +7,13 @@ public class GameController : MonoBehaviour
 {
     private int sanityMeter;
     public List<Transform> teleportLocations = new List<Transform>();
-    private Transform museumPlayerTransform;
+    public Transform museumPlayerTransform;
     private int nextRoomIndex = 1;
     public GameObject player;
     private bool objectPicked;
     private bool objectDestroyed;
-    bool willReturnToMuseum;
+    public bool willReturnToMuseum;
+    public string song = "";
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +21,27 @@ public class GameController : MonoBehaviour
         objectPicked = false;
         objectDestroyed = false;
         sanityMeter = 10;
-        willReturnToMuseum = false;
     }
 
     public void gameOver()
     {
         Debug.Log("GAME OVER!");
+    }
+
+    public string returnSong()
+    {
+        switch (nextRoomIndex)
+        {
+            case 1:
+                song = "MusicBoxChildRoom";
+                break;
+            case 2:
+                song = "Tade";
+                break;
+            default:
+                break;
+        }
+        return song;
     }
 
     public void changeSanityLevel(int num)
@@ -57,11 +73,13 @@ public class GameController : MonoBehaviour
     {
         if (!willReturnToMuseum)
         {
-            museumPlayerTransform = player.transform;
-            return teleportLocations[nextRoomIndex-1];
+            Debug.Log("Tha paei allou");
+            museumPlayerTransform.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+            return teleportLocations[nextRoomIndex - 1];
         }
         else
         {
+            Debug.Log("Tha girisei mouseio");
             returnToMuseum();
             return museumPlayerTransform;
         }
@@ -79,8 +97,8 @@ public class GameController : MonoBehaviour
 
     public void TeleportPlayer()
     {
+        Debug.Log("TELEPORT!!");
         player.transform.position = GetNextRoom().position;
-        AudioManager.instance.PlayFadeIn("MusicBoxChildRoom");
         willReturnToMuseum = !willReturnToMuseum;
     }
 
