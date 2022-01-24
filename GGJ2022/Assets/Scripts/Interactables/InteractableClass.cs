@@ -178,8 +178,8 @@ namespace GGJ.CK
                     List<string> dialogChoices = new List<string>();
 
                     
-                    dialogChoices.Add("1) Yes. Blah blah blah");
-                    dialogChoices.Add("2) No. Blah blah blah");
+                    dialogChoices.Add("1) Throw it away");
+                    dialogChoices.Add("2) No. Keep it.");
 
                     
                     //List<string> dialogChoices = gameController.GetDialogs();
@@ -187,6 +187,7 @@ namespace GGJ.CK
                     {
                         dialogUI.AddDialogChoice(s);
                     }
+                    dialogUI.ResetKeyState();
                     break;
                 default:
                     break;
