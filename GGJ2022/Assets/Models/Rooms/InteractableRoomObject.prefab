@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3106758468863337102}
   - component: {fileID: 9124214738035031405}
-  - component: {fileID: 8068253142383838279}
   m_Layer: 0
   m_Name: InteractableRoomObject
   m_TagString: Untagged
@@ -28,7 +27,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5179324499735586498}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,16 +48,65 @@ MonoBehaviour:
   choiceOneSanity: 0
   choiceTwoSanity: 0
   unlocksRoom: 0
---- !u!135 &8068253142383838279
-SphereCollider:
+--- !u!1001 &3557248134546794259
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7712545236335257966}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Modification:
+    m_TransformParent: {fileID: 3106758468863337102}
+    m_Modifications:
+    - target: {fileID: 8556076661414724048, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_Name
+      value: TeleportTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.297
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+--- !u!4 &5179324499735586498 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8556076661414724049, guid: 999a9bf7f4da7014189d39188861928e, type: 3}
+  m_PrefabInstance: {fileID: 3557248134546794259}
+  m_PrefabAsset: {fileID: 0}
