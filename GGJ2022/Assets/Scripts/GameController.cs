@@ -82,8 +82,6 @@ public class GameController : MonoBehaviour
             Debug.Log("Tha girisei mouseio");
             returnToMuseum();
             return museumPlayerTransform;
-
-            
         }
     }
 
