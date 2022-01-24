@@ -137,7 +137,7 @@ namespace GGJ.CK
                 Debug.Log("#Interactable# read Use !!");
                 break;
                 case USE.TELEPORT:
-                    gameController.TeleportPlayer(false);
+                    gameController.TeleportPlayer();
                     AudioManager.instance.Stop("MainTheme");
                     
                     break;
