@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public GameObject player;
     private bool objectPicked;
     private bool objectDestroyed;
+    bool willReturnToMuseum;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +20,7 @@ public class GameController : MonoBehaviour
         objectPicked = false;
         objectDestroyed = false;
         sanityMeter = 10;
-        
-
+        willReturnToMuseum = false;
     }
 
     public void gameOver()
@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
         objectDestroyed = false;
     }
 
-    public Transform GetNextRoom(bool willReturnToMuseum)
+    public Transform GetNextRoom()
     {
         if (!willReturnToMuseum)
         {
@@ -77,13 +77,11 @@ public class GameController : MonoBehaviour
         objectDestroyed = true;
     }
 
-    public void TeleportPlayer(bool returnToMuseum)
+    public void TeleportPlayer()
     {
-        player.transform.position = GetNextRoom(returnToMuseum).position;
-
-        
+        player.transform.position = GetNextRoom().position;
         AudioManager.instance.PlayFadeIn("MusicBoxChildRoom");
-        
+        willReturnToMuseum = !willReturnToMuseum;
     }
 
     public int GetSanity()
