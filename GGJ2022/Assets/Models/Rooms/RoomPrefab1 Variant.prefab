@@ -284,6 +284,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 20.64
       objectReference: {fileID: 0}
+    - target: {fileID: 5179324499735586527, guid: c243c1dc32353554ba53b376d7f7d5ef, type: 3}
+      propertyPath: paintName
+      value: Return1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179324499735586527, guid: c243c1dc32353554ba53b376d7f7d5ef, type: 3}
+      propertyPath: willReturnToMuseum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7712545236335257966, guid: c243c1dc32353554ba53b376d7f7d5ef, type: 3}
       propertyPath: m_Name
       value: InteractableRoomObject
@@ -798,6 +806,10 @@ PrefabInstance:
       propertyPath: objectDestroyerPoint
       value: 
       objectReference: {fileID: 8719267014914297378}
+    - target: {fileID: 5153284459455388446, guid: 3c424c666af805243a29cdd94f229327, type: 3}
+      propertyPath: m_Name
+      value: SpawnPointRoom1
+      objectReference: {fileID: 0}
     - target: {fileID: 6450867916572510982, guid: 3c424c666af805243a29cdd94f229327, type: 3}
       propertyPath: m_RootOrder
       value: 10
