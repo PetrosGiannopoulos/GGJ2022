@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Video;
 
 namespace GGJ.CK
 {
@@ -138,15 +138,24 @@ namespace GGJ.CK
                             Debug.Log("check hit");
                             hitInteractable = hit.collider.gameObject.GetComponent<InteractableClass>();
                             ShowInteractionPanel("", hitInteractable);
-                            GameObject parentObj = hit.collider.gameObject.transform.parent.gameObject;
-                            
-                            for(int i = 0; i < parentObj.transform.childCount; i++)
-                            {
-                                GameObject childGO = parentObj.transform.GetChild(i).gameObject;
-                                if (childGO.tag.Equals("MarioEffect")) marioPainter = childGO.transform.GetChild(0).gameObject;
-                            }
 
-                            if (marioPainter) marioPainter.GetComponent<Image>().enabled = true;
+                            if (hit.collider.gameObject.transform.parent != null)
+                            {
+                                GameObject parentObj = hit.collider.gameObject.transform.parent.gameObject;
+
+                                for (int i = 0; i < parentObj.transform.childCount; i++)
+                                {
+                                    GameObject childGO = parentObj.transform.GetChild(i).gameObject;
+                                    if (childGO.tag.Equals("MarioEffect")) marioPainter = childGO.transform.GetChild(0).gameObject;
+                                }
+
+                                if (marioPainter)
+                                {
+                                    marioPainter.GetComponent<Image>().enabled = true;
+                                    //marioPainter.GetComponent<VideoPlayer>().enabled = true;
+                                    marioPainter.GetComponent<RippleAnimation>().InitPlayback();
+                                }
+                            }
                             return;
                         }
 
@@ -162,7 +171,12 @@ namespace GGJ.CK
                 {
                     //CursorState();
                     HideInteractionPanel();
-                    if (marioPainter) marioPainter.GetComponent<Image>().enabled = false;
+                    if (marioPainter)
+                    {
+                        marioPainter.GetComponent<Image>().enabled = false;
+                        //marioPainter.GetComponent<VideoPlayer>().enabled = false;
+                        marioPainter.GetComponent<RippleAnimation>().StopPlayback();
+                    }
                     hitInteractable = null;
                 }
                 #endregion

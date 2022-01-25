@@ -11,35 +11,53 @@ public class RippleAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
+
+        /*videoPlayer = GetComponent<VideoPlayer>();
 
         videoPlayer.renderMode = VideoRenderMode.RenderTexture;
         //videoPlayer.playOnAwake = false;
         videoPlayer.isLooping = true;
 
-        videoPlayer.Prepare();
         videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
-        
-        
+        videoPlayer.Prepare();
+
+        GetComponent<Image>().material.renderQueue = 3000;*/
         //videoPlayer.Play();
     }
 
     private void VideoPlayer_prepareCompleted(VideoPlayer source)
     {
         source.Play();
+        Debug.Log("LMAO");
         
     }
 
-    
-    
+    public void StopPlayback()
+    {
+        videoPlayer.Stop();
+    }
+
+    public void InitPlayback()
+    {
+        videoPlayer = GetComponent<VideoPlayer>();
+
+        videoPlayer.renderMode = VideoRenderMode.RenderTexture;
+        //videoPlayer.playOnAwake = false;
+        videoPlayer.isLooping = true;
+
+        videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
+        videoPlayer.Prepare();
+
+        GetComponent<Image>().material.renderQueue = 3000;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(videoPlayer.texture!=null)
+        if(videoPlayer.texture!=null && videoPlayer.isPlaying)
         //Texture2D bumpTexture = source.texture;// toTexture2D(videoPlayer.targetTexture);
-        GetComponent<Image>().material.SetTexture("_BumpMap", videoPlayer.texture);
-        GetComponent<Image>().material.renderQueue = 3000;
+        GetComponent<Image>().material.SetTexture("_BaseMap", videoPlayer.texture);
+        
         //GetComponent<Image>().material.SetTexture("_ParallaxMap", videoPlayer.texture);
     }
 
