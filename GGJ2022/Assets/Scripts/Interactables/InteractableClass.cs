@@ -50,6 +50,8 @@ namespace GGJ.CK
         }
         public USE MyUse = USE.UNSPECIFIED;
 
+        public string itemName;
+        public bool willReturnToMuseum;
         public LayerMask interactableLayerMask;
         [Space]
         //Action
@@ -137,20 +139,46 @@ namespace GGJ.CK
                 Debug.Log("#Interactable# read Use !!");
                 break;
                 case USE.TELEPORT:
-                    if (!gameController.willReturnToMuseum)
+                    int num = 0;
+                    switch (itemName)
                     {
-                        gameController.returnSong();
+                        case "Paint1":
+                            num = 0;
+                            break;
+                        case "Paint2":
+                            num = gameController.secondRoomIsGood ?  1 : 2;
+                            break;
+                        case "Paint3":
+                            num = gameController.thirdRoomIsNeutral ? 5 : gameController.thirdRoomIsGood ? 3 : 4;
+                            break;
+                        case "Return1":
+                            num = 6;
+                            break;
+                        case "Return2":
+                            num = 7;
+                            break;
+                        case "Return3":
+                            num = 8;
+                            break;
+                        case "Elevator1":
+                            num = 9;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (!willReturnToMuseum)
+                    {
                         AudioManager.instance.Stop("MainTheme");
-                        AudioManager.instance.PlayFadeIn(gameController.song);
+                        AudioManager.instance.PlayFadeIn(gameController.songs[num]);
                     }
                     else
                     {
-                        AudioManager.instance.Stop(gameController.song);
+                        AudioManager.instance.Stop(gameController.songs[num]);
                         AudioManager.instance.PlayFadeIn("MainTheme");
                     }
-                    
-                    gameController.TeleportPlayer();
-
+                    gameController.TeleportPlayer(num);
+                    Destroy(this);
                     if (gameObject.tag.Equals("Portal")) StartCoroutine(DestroySelf());
 
                     break;
@@ -204,7 +232,7 @@ namespace GGJ.CK
                     //List<string> dialogChoices = gameController.GetDialogs();
                     foreach (string s in dialogChoices)
                     {
-                        dialogUI.AddDialogChoice(s);
+                        dialogUI.AddDialogChoice(s,itemName);
                     }
                     dialogUI.ResetKeyState();
                     break;

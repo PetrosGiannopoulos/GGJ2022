@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class DialogUI : MonoBehaviour
 {
-
+    private GameController gameController;
     public GameObject dialogTextPrefab;
+    private string currentGameObjectName;
     List<GameObject> dialogTextObjs = new List<GameObject>();
     private int selectionIndex = 0;
     bool isKeyReset = false;
@@ -16,10 +17,22 @@ public class DialogUI : MonoBehaviour
     {
         //AddDialogChoice("Whatever Dialog");
 
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<GameController>();
+            Debug.Log("Found");
+        }
+        if (gameController == null)
+        {
+            Debug.Log("Cannot find 'GameController' script");
+        }
+
     }
 
-    public void AddDialogChoice(string dialogText)
+    public void AddDialogChoice(string dialogText,string itemName)
     {
+        currentGameObjectName = itemName;
         if (dialogTextObjs.Count >= 2) ClearDialogs();
 
         var dialog = Instantiate(dialogTextPrefab, transform);
@@ -93,6 +106,7 @@ public class DialogUI : MonoBehaviour
 
     private void ImplementChoice()
     {
-
+        if (currentGameObjectName == "Belt" && selectionIndex == 0) gameController.secondRoomIsGood = true;
+        else if (currentGameObjectName == "Belt" && selectionIndex == 1) gameController.secondRoomIsGood = false;
     }
 }

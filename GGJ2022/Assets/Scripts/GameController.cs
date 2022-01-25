@@ -13,7 +13,10 @@ public class GameController : MonoBehaviour
     private bool objectPicked;
     private bool objectDestroyed;
     public bool willReturnToMuseum;
-    public string song = "";
+    public string[] songs;
+    public bool secondRoomIsGood = true;
+    public bool thirdRoomIsGood = false;
+    public bool thirdRoomIsNeutral = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,21 +31,21 @@ public class GameController : MonoBehaviour
         Debug.Log("GAME OVER!");
     }
 
-    public string returnSong()
-    {
-        switch (nextRoomIndex)
-        {
-            case 1:
-                song = "MusicBoxChildRoom";
-                break;
-            case 2:
-                song = "Tade";
-                break;
-            default:
-                break;
-        }
-        return song;
-    }
+    //public string returnSong()
+    //{
+    //    switch (nextRoomIndex)
+    //    {
+    //        case 1:
+    //            song = "MusicBoxChildRoom";
+    //            break;
+    //        case 2:
+    //            song = "Tade";
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //    return song;
+    //}
 
     public void changeSanityLevel(int num)
     {
@@ -95,10 +98,11 @@ public class GameController : MonoBehaviour
         objectDestroyed = true;
     }
 
-    public void TeleportPlayer()
+    public void TeleportPlayer(int num)
     {
         Debug.Log("TELEPORT!!");
-        player.transform.position = GetNextRoom().position;
+        //player.transform.position = GetNextRoom().position;
+        player.transform.position = teleportLocations[num].position;
         willReturnToMuseum = !willReturnToMuseum;
     }
 
