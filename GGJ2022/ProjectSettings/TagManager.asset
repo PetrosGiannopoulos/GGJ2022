@@ -12,6 +12,8 @@ TagManager:
   - MarioEffect
   - PickupTrigger
   - DialogUI
+  - NumberButton
+  - Portal
   layers:
   - Default
   - TransparentFX

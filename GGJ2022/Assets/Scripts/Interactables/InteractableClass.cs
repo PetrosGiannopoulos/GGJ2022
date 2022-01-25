@@ -149,8 +149,17 @@ namespace GGJ.CK
                         AudioManager.instance.PlayFadeIn("MainTheme");
                     }
                     gameController.TeleportPlayer();
+
+                    if (gameObject.tag.Equals("Portal")) StartCoroutine(DestroySelf());
+
                     break;
             }
+        }
+
+        IEnumerator DestroySelf()
+        {
+            yield return new WaitForEndOfFrame();
+            Destroy(gameObject);
         }
 
 
