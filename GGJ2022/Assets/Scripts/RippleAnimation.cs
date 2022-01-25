@@ -11,7 +11,8 @@ public class RippleAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GameObject monaLisa = GameObject.Find("MonaLisa");
+        monaLisa.GetComponent<Animator>().Play("MoveEyes");
         /*videoPlayer = GetComponent<VideoPlayer>();
 
         videoPlayer.renderMode = VideoRenderMode.RenderTexture;
@@ -28,7 +29,6 @@ public class RippleAnimation : MonoBehaviour
     private void VideoPlayer_prepareCompleted(VideoPlayer source)
     {
         source.Play();
-        Debug.Log("LMAO");
         
     }
 
@@ -54,10 +54,11 @@ public class RippleAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(videoPlayer.texture!=null && videoPlayer.isPlaying)
-        //Texture2D bumpTexture = source.texture;// toTexture2D(videoPlayer.targetTexture);
-        GetComponent<Image>().material.SetTexture("_BaseMap", videoPlayer.texture);
-        
+        if (videoPlayer != null)
+        {
+
+            if (videoPlayer.texture != null && videoPlayer.isPlaying) GetComponent<Image>().material.SetTexture("_BaseMap", videoPlayer.texture);
+        }
         //GetComponent<Image>().material.SetTexture("_ParallaxMap", videoPlayer.texture);
     }
 
