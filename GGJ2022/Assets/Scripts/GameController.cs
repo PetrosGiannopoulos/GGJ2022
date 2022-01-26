@@ -102,6 +102,28 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("TELEPORT!!");
         //player.transform.position = GetNextRoom().position;
+        if (num == 6)
+        {
+            //Touching teddy bear
+            GameObject belt = GameObject.Find("Belt");
+            GameObject pickupTrigger = null;
+            for (int i = 0; i < belt.transform.childCount; i++)
+            {
+                GameObject childGO = belt.transform.GetChild(i).gameObject;
+                if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
+            }
+            if (pickupTrigger == null)
+            {
+                //go to Clean Room
+                teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointRoom2");
+            }
+            else
+            {
+                //go to Messy Room
+                teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointRoom3");
+            }
+        }
+
         player.transform.position = teleportLocations[num].position;
         willReturnToMuseum = !willReturnToMuseum;
     }
@@ -115,6 +137,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (sanityMeter < 5)
             Debug.Log("Kokkino");
         else if (sanityMeter < 7)
@@ -125,6 +148,6 @@ public class GameController : MonoBehaviour
             Debug.Log("Light Green");
         else
             Debug.Log("Dark Green");
-
+        */
     }
 }
