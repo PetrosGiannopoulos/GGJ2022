@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StorySanity : MonoBehaviour
 {
 
     public static StorySanity instance;
+    public Image sanityImage;
 
+    private float minSanity = -20.0f;
+    private float maxSanity = 20.0f;
+
+    
     //Low Values < 0 == Insanity/Madness 
     //Hi Values > 0 == (Wisedom? or safe mind)
     int currentStorySanity=0;
@@ -30,6 +36,13 @@ public class StorySanity : MonoBehaviour
     {
         currentStorySanity += value;
         Debug.Log($"CurrentSanityPoints: {currentStorySanity}");
+
+        sanityImage.fillAmount = GetNormalizedValue();
+    }
+
+    public float GetNormalizedValue()
+    {
+        return (currentStorySanity - minSanity) / (maxSanity - minSanity);
     }
 
     public int GetStorySanity()

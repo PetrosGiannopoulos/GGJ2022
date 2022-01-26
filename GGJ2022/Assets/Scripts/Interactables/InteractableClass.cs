@@ -156,7 +156,6 @@ namespace GGJ.CK
                             break;
                         case "Return1":
                             num = 6;
-                            Debug.Log("TeddyBearTouch");
                             StorySanity.instance.AddSanityPoints(-1);
 
                             break;
