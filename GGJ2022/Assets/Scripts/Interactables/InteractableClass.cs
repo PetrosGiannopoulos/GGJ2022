@@ -64,6 +64,9 @@ namespace GGJ.CK
         //my audio
         protected AudioSource inter_AudioSource;
 
+        
+
+
         private void Awake()
         {
             //gameObject.layer = itemLayer;
@@ -99,15 +102,15 @@ namespace GGJ.CK
         #region Delegates_Actions_Events
         public void ActionCaller()
         {
-            if(OnInteractionAction != null)
+            if (OnInteractionAction != null)
                 OnInteractionAction.Invoke();
         }
 
         public void EventCaller()
         {
-            foreach(UnityEvent e in eventsOnInteraction)
+            foreach (UnityEvent e in eventsOnInteraction)
             {
-                if(e != null)
+                if (e != null)
                     e.Invoke();
             }
         }
@@ -115,29 +118,29 @@ namespace GGJ.CK
 
         void UsageFlow()
         {
-            switch(MyUse)
+            switch (MyUse)
             {
                 case USE.UNSPECIFIED:
-                Debug.Log("#Interactable# Usage is unspecified !!");
-                break;
+                    Debug.Log("#Interactable# Usage is unspecified !!");
+                    break;
                 case USE.SINGLE:
-                //Do nothing in here
-                Debug.Log("#Interactable# Single Use !!");
+                    //Do nothing in here
+                    Debug.Log("#Interactable# Single Use !!");
 
-                break;
+                    break;
                 case USE.COLLECT:
-                Debug.Log("#Interactable# collect Use !!");
+                    Debug.Log("#Interactable# collect Use !!");
 
-                break;
+                    break;
                 case USE.EQUIP:
-                Debug.Log("#Interactable# equip Use !!");
-                //Debug.Log(gameObject.name);
-                PickupObject();
-                break;
+                    Debug.Log("#Interactable# equip Use !!");
+                    //Debug.Log(gameObject.name);
+                    PickupObject();
+                    break;
 
                 case USE.READ:
-                Debug.Log("#Interactable# read Use !!");
-                break;
+                    Debug.Log("#Interactable# read Use !!");
+                    break;
                 case USE.TELEPORT:
                     int num = 0;
                     switch (itemName)
@@ -146,22 +149,31 @@ namespace GGJ.CK
                             num = 0;
                             break;
                         case "Paint2":
-                            num = gameController.secondRoomIsGood ?  1 : 2;
+                            num = gameController.secondRoomIsGood ? 1 : 2;
                             break;
                         case "Paint3":
                             num = gameController.thirdRoomIsNeutral ? 5 : gameController.thirdRoomIsGood ? 3 : 4;
                             break;
                         case "Return1":
                             num = 6;
+                            Debug.Log("TeddyBearTouch");
+                            StorySanity.instance.AddSanityPoints(-1);
+
                             break;
                         case "Return2":
                             num = 7;
+                            Debug.Log("Exiting Adult Clean Room");
+                            StorySanity.instance.AddSanityPoints(+1);
                             break;
                         case "Return3":
                             num = 8;
                             break;
                         case "Elevator1":
                             num = 9;
+                            break;
+                        case "DarkEnter":
+                            Debug.Log("EnteringDarkPainting");
+                            num = 10;
                             break;
                         default:
                             break;
@@ -216,36 +228,103 @@ namespace GGJ.CK
         public void PickupObject()
         {
             GameObject parentObj = gameObject.transform.parent.gameObject;
+            List<string> dialogChoices = new List<string>();
             switch (parentObj.name)
             {
                 case "Belt":
                     gameController.pickObject();
                     dialogUI.ClearDialogs();
 
-                    List<string> dialogChoices = new List<string>();
-
-                    
                     dialogChoices.Add("1) Throw it away");
                     dialogChoices.Add("2) No. Keep it.");
 
-                    
                     //List<string> dialogChoices = gameController.GetDialogs();
                     foreach (string s in dialogChoices)
                     {
-                        dialogUI.AddDialogChoice(s,itemName);
+                        dialogUI.AddDialogChoice(s, itemName);
                     }
                     dialogUI.ResetKeyState();
                     break;
+                case "PhoneClean":
+                    gameController.pickObject();
+                    dialogUI.ClearDialogs();
+
+                    dialogChoices.Add("1) Answer to message.");
+                    dialogChoices.Add("2) Ignore message.");
+
+                    foreach (string s in dialogChoices)
+                    {
+                        dialogUI.AddDialogChoice(s, itemName);
+                    }
+                    dialogUI.ResetKeyState();
+
+
+
+                    break;
+                case "Toy_Train":
+
+                    StorySanity.instance.AddSanityPoints(+1);
+                    /*GameObject pickupTrigger = null;
+                    for(int i = 0; i < gameObject.transform.childCount; i++)
+                    {
+                        GameObject childGO = gameObject.transform.GetChild(i).gameObject;
+                        if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
+                    }*/
+                    Destroy(gameObject, 0.1f);
+                    //Destroy(pickupTrigger,0.1f);
+                    break;
+                case "Teddy_Bear":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "Desk":
+                    //Child Room Globe
+                    StorySanity.instance.AddSanityPoints(+1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "DeskGlobe":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "GuitarClean":
+                    StorySanity.instance.AddSanityPoints(+1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "WindowClean":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "PhoneMessy":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "tv":
+                    StorySanity.instance.AddSanityPoints(+1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "WindowMessy":
+                    StorySanity.instance.AddSanityPoints(+1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "Carpet":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "GuitarMessy":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameObject, 0.1f);
+                    break;
                 default:
                     break;
+                    
             }
         }
 
         protected void PlayOneShot(AudioClip sfx)
         {
-            if(sfx != null || inter_AudioSource != null)
+            if (sfx != null || inter_AudioSource != null)
             {
-                if(inter_AudioSource.isPlaying)
+                if (inter_AudioSource.isPlaying)
                     inter_AudioSource.Stop();
                 //then
                 inter_AudioSource.clip = sfx;

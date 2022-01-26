@@ -95,7 +95,7 @@ public class DialogUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isKeyReset)
         {
             //Close Dialog and Implement Choice Result
-            Debug.Log(selectionIndex);
+            //Debug.Log(selectionIndex);
             ClearDialogs();
             isKeyReset = false;
 
@@ -106,7 +106,46 @@ public class DialogUI : MonoBehaviour
 
     private void ImplementChoice()
     {
-        if (currentGameObjectName == "Belt" && selectionIndex == 0) gameController.secondRoomIsGood = true;
-        else if (currentGameObjectName == "Belt" && selectionIndex == 1) gameController.secondRoomIsGood = false;
+        if (currentGameObjectName == "Belt" && selectionIndex == 0)
+        {
+            //Destroy Belt
+            gameController.secondRoomIsGood = true;
+            StorySanity.instance.AddSanityPoints(+1);
+            GameObject belt = GameObject.Find(currentGameObjectName);
+            GameObject throwAwayPoint = null;
+            GameObject pickupTrigger = null;
+            for (int i = 0; i < belt.transform.childCount; i++)
+            {
+                GameObject childGO = belt.transform.GetChild(i).gameObject;
+                if (childGO.name.Equals("ThrowAwayPoint")) throwAwayPoint = childGO;
+                if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
+            }
+
+            belt.transform.position = throwAwayPoint.transform.position;
+            Destroy(pickupTrigger, 0.1f);
+
+            LocationManager.instance.defaultRoom1 = 1;
+
+        }
+        else if (currentGameObjectName == "Belt" && selectionIndex == 1)
+        {
+            //Don't destroy it
+            gameController.secondRoomIsGood = false;
+            StorySanity.instance.AddSanityPoints(-1);
+        }
+
+        if (currentGameObjectName == "PhoneClean")
+        {
+            GameObject phone = GameObject.Find(currentGameObjectName);
+            GameObject pickupTrigger = null;
+            for (int i = 0; i < phone.transform.childCount; i++)
+            {
+                GameObject childGO = phone.transform.GetChild(i).gameObject;
+                if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
+            }
+
+            Destroy(pickupTrigger, 0.1f);
+
+        }
     }
 }
