@@ -51,6 +51,7 @@ namespace GGJ.CK
         public USE MyUse = USE.UNSPECIFIED;
 
         public string itemName;
+        public int sanityModifier;
         public bool willReturnToMuseum;
         public LayerMask interactableLayerMask;
         [Space]
@@ -231,17 +232,20 @@ namespace GGJ.CK
             switch (parentObj.name)
             {
                 case "Belt":
-                    gameController.pickObject();
+                    //gameController.pickObject();
                     dialogUI.ClearDialogs();
 
                     dialogChoices.Add("1) Throw it away");
                     dialogChoices.Add("2) No. Keep it.");
 
+                    
+                    
                     //List<string> dialogChoices = gameController.GetDialogs();
                     foreach (string s in dialogChoices)
                     {
                         dialogUI.AddDialogChoice(s, itemName);
                     }
+
                     dialogUI.ResetKeyState();
                     break;
                 case "PhoneClean":
