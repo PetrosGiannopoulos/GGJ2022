@@ -1,0 +1,947 @@
+fileFormatVersion: 2
+guid: ce515bbfd6b686040ada17f028e8c1fd
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hard Rough Plastic Black
+    second: {fileID: 2100000, guid: c784230aab02b334b904d3cf5db91044, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leather Dark Red 1000mm
+    second: {fileID: 2100000, guid: 3be22568ce49c4e43892918e24c73000, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steel Polished
+    second: {fileID: 2100000, guid: 92ae3dfae7ef6274786ecab64615083d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steel Rough
+    second: {fileID: 2100000, guid: 6763a9976bd1c3f48839e406b50bd124, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210
+    second: {fileID: 2100000, guid: ebbb927194fa61a42b3196166dd5f8e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #1
+    second: {fileID: 2100000, guid: bae7e6729bd49c542a534d2cd48d439a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #10
+    second: {fileID: 2100000, guid: 647b45b8928a1724db9853315f7f90bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #11
+    second: {fileID: 2100000, guid: 16e3e8e27623fc645b82689ef7f2d783, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #12
+    second: {fileID: 2100000, guid: 8d360907c722ecc49928b30a49e0d5a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #13
+    second: {fileID: 2100000, guid: 7fb1cf90688aa5c44a50b5bb845a6a39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #14
+    second: {fileID: 2100000, guid: 6d866d67a9ffae0489b99da565bd66c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #15
+    second: {fileID: 2100000, guid: af0b4491539d04f47a2cd73bf4cea40b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #16
+    second: {fileID: 2100000, guid: 807a791cabac18c4496dae35a0352057, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #17
+    second: {fileID: 2100000, guid: 64bc1ec7e6c89a94e9d113b08618b4d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #18
+    second: {fileID: 2100000, guid: 6595e8e2c3263c244b60f19a2d76e1f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #19
+    second: {fileID: 2100000, guid: 61be84d067e0ec9489ea2057a924ade2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #2
+    second: {fileID: 2100000, guid: 4a60fd42a44157f4c82a195578b93b84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #20
+    second: {fileID: 2100000, guid: a8a9e8af87e6ff24c969e2f157cd61fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #21
+    second: {fileID: 2100000, guid: 6f0ff5256a704fd4db57721f5e9bd90d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #22
+    second: {fileID: 2100000, guid: f33c8815e66004b45b7f88ef19eadd75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #23
+    second: {fileID: 2100000, guid: 404914b65a8d1754bb37f5e4ca69a683, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #24
+    second: {fileID: 2100000, guid: 5ba6b65702e782e4395e838db7d603bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #25
+    second: {fileID: 2100000, guid: 9ef69b438f4a2aa478f522e98a7ef527, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #26
+    second: {fileID: 2100000, guid: d915c2e8f127c014e98aa79489d7719b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #3
+    second: {fileID: 2100000, guid: aa4c758ca9cf49f469e598c29a66bf8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #4
+    second: {fileID: 2100000, guid: a61b0b7b990b1ed4591deb65a0cbae56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #5
+    second: {fileID: 2100000, guid: cf14b782a5517c048a0876c842ab0216, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #6
+    second: {fileID: 2100000, guid: baf8c08b0c4ee1d47a08d28ef3bf7396, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #7
+    second: {fileID: 2100000, guid: c72ff3942fb88ce4bbd2219aa386a989, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #8
+    second: {fileID: 2100000, guid: 29dcbf268e8042f40a44c127fcac3758, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue low gloss plastic_2_61_210 #9
+    second: {fileID: 2100000, guid: ec9907d3a03e567428ada132f16150cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238
+    second: {fileID: 2100000, guid: 0ec1d30959aa4d143b2b1862931b591d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #1
+    second: {fileID: 2100000, guid: 44a72d07c8b18cb49aa211e379a59fb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #10
+    second: {fileID: 2100000, guid: 71fed0dfd103592459140813663fb0a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #11
+    second: {fileID: 2100000, guid: bd36828bae4d3834ba0dd723568e69d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #12
+    second: {fileID: 2100000, guid: f036ee7f25d2ea1408a93af87894348b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #13
+    second: {fileID: 2100000, guid: dd2182a75a81f0e4a93f5d35de4069af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #14
+    second: {fileID: 2100000, guid: 630314f574b53f54b940b338f4ab2437, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #15
+    second: {fileID: 2100000, guid: 448e380a771f7a945bfd5bebb3f696fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #16
+    second: {fileID: 2100000, guid: c2ecdf5e4ad83c04aa84224d6fae98b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #17
+    second: {fileID: 2100000, guid: 1a7c60aa2539a054cbb8428ce03af137, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #18
+    second: {fileID: 2100000, guid: b3630aacd3cc6a24dad2993ccd9a20dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #19
+    second: {fileID: 2100000, guid: ff524de5937f5d24896aa1dcf157ae3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #2
+    second: {fileID: 2100000, guid: 0a8d957e4d3c76246906897050669e92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #20
+    second: {fileID: 2100000, guid: 631f2543d2b13064f8b62c9edc0b37ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #21
+    second: {fileID: 2100000, guid: 2d1571d4f77a1214983ce599c37d0ee9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #22
+    second: {fileID: 2100000, guid: 8177f23f38121b241bdef06efaf2193e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #23
+    second: {fileID: 2100000, guid: 9513c081021596b45a4dc1c736b591b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #24
+    second: {fileID: 2100000, guid: 1b23dc551a6458c4da5045895d0feb4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #25
+    second: {fileID: 2100000, guid: 543cf022ea70ea44bac01face13555b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #26
+    second: {fileID: 2100000, guid: abaccc8f95eedad41a0a85921ca45b12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #3
+    second: {fileID: 2100000, guid: 45d52899bf1db2d4aa4e06eac043766c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #4
+    second: {fileID: 2100000, guid: 9ed8b964ebf64904187de4e55d728d68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #5
+    second: {fileID: 2100000, guid: ebe0dfbe805fcd24c81372277c99f8d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #6
+    second: {fileID: 2100000, guid: 7c38ea4eebaeb8d488491815b83b4766, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #7
+    second: {fileID: 2100000, guid: 80f28117254dbf44ebab5de9e06c7a3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #8
+    second: {fileID: 2100000, guid: f766618bcde9cac499ce9b6d334d0977, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color_202_209_238 #9
+    second: {fileID: 2100000, guid: e89a75a5ffc4bd044bcf852fc770d5a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84
+    second: {fileID: 2100000, guid: 33f28bd1ae16d254a8bbaac1427119e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #1
+    second: {fileID: 2100000, guid: f0448194201c3154f8b5003f2074c13d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #10
+    second: {fileID: 2100000, guid: cf2da2fe5d14015409d2534d72185a1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #11
+    second: {fileID: 2100000, guid: 9ff2f8452584c504eacf2425a761a439, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #12
+    second: {fileID: 2100000, guid: c70b0d77e01d4dd40a38ff501d130ec9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #13
+    second: {fileID: 2100000, guid: d0952763e0324cf4bab84c03c1c956ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #14
+    second: {fileID: 2100000, guid: 27019f34fef8c5044b9c559690fb60d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #15
+    second: {fileID: 2100000, guid: 6fdee478701c3244696595d4c3196d86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #16
+    second: {fileID: 2100000, guid: bd6dc8f3087c1d74eaa30f12b7f773f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #17
+    second: {fileID: 2100000, guid: 37c644816a418e14198c676e6979b5d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #18
+    second: {fileID: 2100000, guid: f9dd095a53968984aa777a0bca6bd4e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #19
+    second: {fileID: 2100000, guid: 96612e8e99900e149a5102d08252f6ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #2
+    second: {fileID: 2100000, guid: 284b15b123a01974396f84032673fe86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #20
+    second: {fileID: 2100000, guid: ef27d678b8ea58c4882a52ca50c804fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #21
+    second: {fileID: 2100000, guid: 09fb23b3e0fd7fe4b8a433adc5ddb104, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #22
+    second: {fileID: 2100000, guid: b9f9b1a73b4519f4a9cf909d080a3265, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #23
+    second: {fileID: 2100000, guid: d508695036c0c2143b9ff7d6a09fd9b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #24
+    second: {fileID: 2100000, guid: 31505d014aa83f44bb586dd2898657e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #25
+    second: {fileID: 2100000, guid: a445d71675518ed40a9e980bf63dee2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #26
+    second: {fileID: 2100000, guid: bb96640aa087e014d8730a1fc515c29b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #3
+    second: {fileID: 2100000, guid: 90464b2deede9ba48868b0f433ac3159, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #4
+    second: {fileID: 2100000, guid: 798273f468afb5d49837148e75dfde15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #5
+    second: {fileID: 2100000, guid: 6ead08feae42cc5438c10ebfa30e548b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #6
+    second: {fileID: 2100000, guid: bb08589cbdd544a42a6dac6f3be6f7b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #7
+    second: {fileID: 2100000, guid: b0eb2302ba402394bbb2dcfe71dcc3df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #8
+    second: {fileID: 2100000, guid: b5bd7da7038f2204f91e20caa2657a64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green low gloss plastic_73_169_84 #9
+    second: {fileID: 2100000, guid: 4336ee8000c3c3e47bf02f3a7800ae0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84
+    second: {fileID: 2100000, guid: b68946484ebe1c34c956fbe35f79da93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #1
+    second: {fileID: 2100000, guid: c6aefce2bb97ad64cb2e13b139e543f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #10
+    second: {fileID: 2100000, guid: 0e02d3e68c286174ebf553f3aea8d85a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #11
+    second: {fileID: 2100000, guid: 3a673c839bcec7342b76abb72f1cda27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #12
+    second: {fileID: 2100000, guid: d640cf7ad73da9446bddf50af37cfffc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #13
+    second: {fileID: 2100000, guid: acd80fc9bd3501a48aec477a90155bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #14
+    second: {fileID: 2100000, guid: 419d8edc2758a4a4b98e053bfa3dd134, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #15
+    second: {fileID: 2100000, guid: 873798a4da1af8d458558bc4f058e96e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #16
+    second: {fileID: 2100000, guid: cb2423119876a814ebd868e51308dc2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #17
+    second: {fileID: 2100000, guid: 8592f72598c79114fa6d816622b61fbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #18
+    second: {fileID: 2100000, guid: c4539661ef5d02143bdad2fe67563ebb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #19
+    second: {fileID: 2100000, guid: 17c5967cec89cc545b01e370d1204225, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #2
+    second: {fileID: 2100000, guid: fab3aeb179eab83409c912101dd4129c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #20
+    second: {fileID: 2100000, guid: b1342c54de68a8049afdb41165f8af5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #21
+    second: {fileID: 2100000, guid: fdd3e932f885e804590e573022947170, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #22
+    second: {fileID: 2100000, guid: d484b21609641ed44940fb95520b114a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #23
+    second: {fileID: 2100000, guid: 19d7b68c2017f974d8f0b7c417faae3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #24
+    second: {fileID: 2100000, guid: 1d75c6723a5117f4cb449eeb92ceae26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #25
+    second: {fileID: 2100000, guid: e541d44155f3b774b813bb9a9abd7268, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #26
+    second: {fileID: 2100000, guid: 572df9353ac01404d844bf08b30a11d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #3
+    second: {fileID: 2100000, guid: 0109dc39e7406774c86a37ed2be2633a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #4
+    second: {fileID: 2100000, guid: 2f1e6dcec734f3749a967e81e6c24d1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #5
+    second: {fileID: 2100000, guid: 6bae2913e247b7a49b441848668ccf5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #6
+    second: {fileID: 2100000, guid: af6060615f84196468a9e903ba9c9062, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #7
+    second: {fileID: 2100000, guid: 1a57f9e59ba84384bb0435be202cd29c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #8
+    second: {fileID: 2100000, guid: 868e2fd9fb4605b488ddab81c2da0dc4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green medium gloss plastic_73_169_84 #9
+    second: {fileID: 2100000, guid: fa18b91f4a0f6cb48922befe8692d761, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25
+    second: {fileID: 2100000, guid: b566153a031a9424cb937b68d7e1f87d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #1
+    second: {fileID: 2100000, guid: 99909942c8ebbad459d667ce138bd85c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #10
+    second: {fileID: 2100000, guid: b88e512412401f54db56e34bad20aee7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #11
+    second: {fileID: 2100000, guid: 0b262d302c6d0a64db64d53dd9e7756f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #12
+    second: {fileID: 2100000, guid: bd494ac64f95ea345b6eb61834f4bf8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #13
+    second: {fileID: 2100000, guid: 1d1040ccaff452341b1ceb4a892bab77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #14
+    second: {fileID: 2100000, guid: dd89e76d9cf737f4ab67b645ecabb306, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #15
+    second: {fileID: 2100000, guid: a144274a91b95aa42baa9e32e59b73e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #16
+    second: {fileID: 2100000, guid: 467cce0392d1e524eac43e222f4cacd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #17
+    second: {fileID: 2100000, guid: efea39a7e3940d04799a334671cb9762, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #18
+    second: {fileID: 2100000, guid: 59fdfb9812f062042b0aa2299fd9640d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #19
+    second: {fileID: 2100000, guid: 0b75c0df4a12e8349b933b798ac36137, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #2
+    second: {fileID: 2100000, guid: 96edef1a20e4375408171bd34fd1af3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #20
+    second: {fileID: 2100000, guid: afd6b0c167e546b4bb58cb2ef059f0a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #21
+    second: {fileID: 2100000, guid: accd0a3013451994ca8dd9e14b98ad8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #22
+    second: {fileID: 2100000, guid: a94bd4d0681e6f64cbbd285255af5b95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #23
+    second: {fileID: 2100000, guid: 54ba8188472bcec4699c077c0fe5c8d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #24
+    second: {fileID: 2100000, guid: 081cf7c230e803c43a64c81d2f2da8a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #25
+    second: {fileID: 2100000, guid: 921ae765cea9216478110780f7448bff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #26
+    second: {fileID: 2100000, guid: 64a6de91c3906384595379b567b9873f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #3
+    second: {fileID: 2100000, guid: 7e939dddb18348a45a02afe1585f108d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #4
+    second: {fileID: 2100000, guid: 401bb718f09cacd43a492aaf61a59feb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #5
+    second: {fileID: 2100000, guid: 065b93e729f12d349b0f9ad074c74cf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #6
+    second: {fileID: 2100000, guid: 8a570fc82e3e88149af9ef1342db7252, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #7
+    second: {fileID: 2100000, guid: 7bb2351dcdb4d1641bd08b3a6bd1d048, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #8
+    second: {fileID: 2100000, guid: e1267f1b47af2b14b93ecbeb9df30f60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red low gloss plastic_177_25_25 #9
+    second: {fileID: 2100000, guid: 28b856b1b7bc5fd4aa25fc1b1340640c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35
+    second: {fileID: 2100000, guid: edfc04db5dc750f4d8034bfbb8c89203, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #1
+    second: {fileID: 2100000, guid: 60d92e95140b6cd48b18b44f57492536, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #10
+    second: {fileID: 2100000, guid: 6669ef138ffc4ae418277ff994185d58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #11
+    second: {fileID: 2100000, guid: a9ee041a8f27c354985e94b40075aec1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #12
+    second: {fileID: 2100000, guid: 21b9e41ae2368af42ab1babec657837c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #13
+    second: {fileID: 2100000, guid: e02541065f763cc4f9b5122ee2dace73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #14
+    second: {fileID: 2100000, guid: 11d5a4b6f1820c74db87c6801991d7b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #15
+    second: {fileID: 2100000, guid: 1904e106aa3a0664a83876b05e0d5ef0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #16
+    second: {fileID: 2100000, guid: 62e4b34c4e2373249963d4204fe132d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #17
+    second: {fileID: 2100000, guid: e1a5831c2377a444e99f4a24e32984ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #18
+    second: {fileID: 2100000, guid: 5df8b1f69fd716240b3f107fc1623247, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #19
+    second: {fileID: 2100000, guid: c50b8852d4a1d8e4fa0a87c19a1db95b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #2
+    second: {fileID: 2100000, guid: 59006f9da96fb19409981177af57a543, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #20
+    second: {fileID: 2100000, guid: f4eb6aad0427d004aa2ed0ed9479e57c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #21
+    second: {fileID: 2100000, guid: 719bc594b86d34e41b8aa433f10a2b93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #22
+    second: {fileID: 2100000, guid: 903b316f615443c4398730ad7eef868c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #23
+    second: {fileID: 2100000, guid: 34018bc3da4bd8e46b11b348c1a4d2a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #24
+    second: {fileID: 2100000, guid: ac47d28d739a4f748ac70acd601baf73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #25
+    second: {fileID: 2100000, guid: 062a9894e5a27034a81da8a27e286c30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #26
+    second: {fileID: 2100000, guid: 9d00a816e738cf94f9c80012103e853b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #3
+    second: {fileID: 2100000, guid: a7bb7aff70e936c42a82bc73c4a6e776, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #4
+    second: {fileID: 2100000, guid: c5472b425aa313d40bc6b47e0fa9159f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #5
+    second: {fileID: 2100000, guid: 25b3ce48ea3427442848822a31bf40bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #6
+    second: {fileID: 2100000, guid: da8612b701885fe45a24d21e071e48de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #7
+    second: {fileID: 2100000, guid: ac3e8beb5f7637c45a7b0f5af9f8d799, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #8
+    second: {fileID: 2100000, guid: 53da216439bde9545adc255bde8da17d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow medium gloss plastic_255_239_35 #9
+    second: {fileID: 2100000, guid: 38f708a69f1561640b183564da0c9c69, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: back 100 dollar
+    second: {fileID: 2800000, guid: 066581a4f90c64c4584e3dbb5a3edb30, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dollar svezanj1
+    second: {fileID: 2800000, guid: a1e20d15f892a9140b2a4814856fc6b9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: front 100 dollar
+    second: {fileID: 2800000, guid: 45b6a19e2e6c8fb46b39e23ffdb33596, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

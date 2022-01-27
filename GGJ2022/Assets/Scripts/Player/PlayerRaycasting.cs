@@ -176,6 +176,7 @@ namespace GGJ.CK
                         marioPainter.GetComponent<Image>().enabled = false;
                         //marioPainter.GetComponent<VideoPlayer>().enabled = false;
                         marioPainter.GetComponent<RippleAnimation>().StopPlayback();
+                        marioPainter = null;
                     }
                     hitInteractable = null;
                 }
