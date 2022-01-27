@@ -8,11 +8,18 @@ public class LocationManager : MonoBehaviour
     public static LocationManager instance;
     public List<GameObject> locations = new List<GameObject>();
 
-    public int defaultRoom1 = -1;
-    public int defaultRoom21;
-    public int defaultRoom22;
-    public int defaultRoom31;
-    public int defaultRoom32;
+    public bool defaultRoom1 = true;
+    public bool defaultRoom21;
+    public bool defaultRoom22;
+    public bool defaultRoom31;
+    public bool defaultRoom32;
+
+    public bool room1Unlocked = false;
+    public bool room21Unlocked = false;
+    public bool room22Unlocked = false;
+    public bool room31Unlocked = false;
+    public bool room32Unlocked = false;
+    
 
     // Start is called before the first frame update
     void Awake()

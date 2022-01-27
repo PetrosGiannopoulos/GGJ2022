@@ -155,17 +155,14 @@ namespace GGJ.CK
                         case "Paint3":
                             num = gameController.thirdRoomIsNeutral ? 5 : gameController.thirdRoomIsGood ? 3 : 4;
                             break;
-                        case "Return1":
+                        case "Room1Door":
                             num = 6;
-                            StorySanity.instance.AddSanityPoints(-1);
-
                             break;
-                        case "Return2":
+                        case "Room21Door":
                             num = 7;
-                            Debug.Log("Exiting Adult Clean Room");
-                            StorySanity.instance.AddSanityPoints(+1);
+                            
                             break;
-                        case "Return3":
+                        case "Room22Door":
                             num = 8;
                             break;
                         case "Elevator1":
@@ -227,6 +224,8 @@ namespace GGJ.CK
 
         public void PickupObject()
         {
+
+
             GameObject parentObj = gameObject.transform.parent.gameObject;
             List<string> dialogChoices = new List<string>();
             switch (parentObj.name)
@@ -238,8 +237,6 @@ namespace GGJ.CK
                     dialogChoices.Add("1) Throw it away");
                     dialogChoices.Add("2) No. Keep it.");
 
-                    
-                    
                     //List<string> dialogChoices = gameController.GetDialogs();
                     foreach (string s in dialogChoices)
                     {
@@ -261,7 +258,8 @@ namespace GGJ.CK
                     }
                     dialogUI.ResetKeyState();
 
-
+                    LocationManager.instance.room21Unlocked = true;
+                    GameObject.Find("Room21Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
 
                     break;
                 case "Toy_Train":
@@ -277,8 +275,13 @@ namespace GGJ.CK
                     //Destroy(pickupTrigger,0.1f);
                     break;
                 case "Teddy_Bear":
+                    Debug.Log("Room1 Unlocking");
+                    LocationManager.instance.room1Unlocked = true;
+                    GameObject.Find("Room1Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
                     StorySanity.instance.AddSanityPoints(-1);
                     Destroy(gameObject, 0.1f);
+                    
+
                     break;
                 case "Desk":
                     //Child Room Globe
@@ -302,6 +305,7 @@ namespace GGJ.CK
                     Destroy(gameObject, 0.1f);
                     break;
                 case "tv":
+                    GameObject.Find("Room22Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
                     StorySanity.instance.AddSanityPoints(+1);
                     Destroy(gameObject, 0.1f);
                     break;
@@ -316,6 +320,18 @@ namespace GGJ.CK
                 case "GuitarMessy":
                     StorySanity.instance.AddSanityPoints(-1);
                     Destroy(gameObject, 0.1f);
+                    break;
+                case "DrugsClean":
+                    StorySanity.instance.AddSanityPoints(+1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "DrugsMessy":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameObject, 0.1f);
+                    break;
+                case "RecordPlayerClean":
+                    StorySanity.instance.AddSanityPoints(-1);
+                    Destroy(gameController,0.1f);
                     break;
                 default:
                     break;

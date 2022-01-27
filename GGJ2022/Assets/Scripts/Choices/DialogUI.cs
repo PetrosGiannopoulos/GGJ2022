@@ -124,7 +124,7 @@ public class DialogUI : MonoBehaviour
             belt.transform.position = throwAwayPoint.transform.position;
             Destroy(pickupTrigger, 0.1f);
 
-            LocationManager.instance.defaultRoom1 = 1;
+            LocationManager.instance.defaultRoom1 = false;
 
         }
         else if (currentGameObjectName == "Belt" && selectionIndex == 1)
@@ -132,9 +132,29 @@ public class DialogUI : MonoBehaviour
             //Don't destroy it
             gameController.secondRoomIsGood = false;
             StorySanity.instance.AddSanityPoints(-1);
+            GameObject belt = GameObject.Find(currentGameObjectName);
+            GameObject pickupTrigger = null;
+            for (int i = 0; i < belt.transform.childCount; i++)
+            {
+                GameObject childGO = belt.transform.GetChild(i).gameObject;
+                if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
+            }
+            Destroy(pickupTrigger, 0.1f);
         }
 
-        if (currentGameObjectName == "PhoneClean")
+        if (currentGameObjectName == "PhoneClean" && selectionIndex==0)
+        {
+            GameObject phone = GameObject.Find(currentGameObjectName);
+            GameObject pickupTrigger = null;
+            for (int i = 0; i < phone.transform.childCount; i++)
+            {
+                GameObject childGO = phone.transform.GetChild(i).gameObject;
+                if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
+            }
+            StorySanity.instance.AddSanityPoints(-1);
+            Destroy(pickupTrigger, 0.1f);
+        }
+        else if(currentGameObjectName == "PhoneClean" && selectionIndex == 1)
         {
             GameObject phone = GameObject.Find(currentGameObjectName);
             GameObject pickupTrigger = null;
@@ -144,8 +164,10 @@ public class DialogUI : MonoBehaviour
                 if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
             }
 
+            StorySanity.instance.AddSanityPoints(+1);
             Destroy(pickupTrigger, 0.1f);
-
         }
+
+        currentGameObjectName = "";
     }
 }

@@ -24,6 +24,15 @@ public class GameController : MonoBehaviour
         objectPicked = false;
         objectDestroyed = false;
         sanityMeter = 10;
+
+        //StartCoroutine(delayTransfer());
+        
+    }
+
+    IEnumerator delayTransfer()
+    {
+        yield return new WaitForSeconds(2);
+        player.transform.position = LocationManager.instance.GetLocationPos("BadEnding2");
     }
 
     public void gameOver()
@@ -104,15 +113,9 @@ public class GameController : MonoBehaviour
         //player.transform.position = GetNextRoom().position;
         if (num == 6)
         {
-            //Touching teddy bear
-            GameObject belt = GameObject.Find("Belt");
-            GameObject pickupTrigger = null;
-            for (int i = 0; i < belt.transform.childCount; i++)
-            {
-                GameObject childGO = belt.transform.GetChild(i).gameObject;
-                if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
-            }
-            if (pickupTrigger == null)
+            if (LocationManager.instance.defaultRoom1) StorySanity.instance.AddSanityPoints(-1);
+            //Exiting Room 1
+            if (StorySanity.instance.GetStorySanity() >=0)
             {
                 //go to Clean Room
                 teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointRoom2");
@@ -122,7 +125,38 @@ public class GameController : MonoBehaviour
                 //go to Messy Room
                 teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointRoom3");
             }
+
         }
+        else if (num == 7)
+        {
+
+            teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointGarage");
+
+            if (StorySanity.instance.GetStorySanity() >= 0)
+            {
+                //garage good scenario
+                
+            }
+            else
+            {
+                //garage bad scenario
+            }
+        }
+        else if (num == 8)
+        {
+            teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointGarage");
+
+            if (StorySanity.instance.GetStorySanity() >= 0)
+            {
+                //garage good scenario
+
+            }
+            else
+            {
+                //garage bad scenario
+            }
+        }
+
 
         player.transform.position = teleportLocations[num].position;
         willReturnToMuseum = !willReturnToMuseum;
