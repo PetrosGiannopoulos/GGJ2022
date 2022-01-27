@@ -46,7 +46,8 @@ namespace GGJ.CK
             OPEN,
             CLOSE,
             THROW,
-            TELEPORT
+            TELEPORT,
+            END
         }
         public USE MyUse = USE.UNSPECIFIED;
         public List<string> dialogChoices = new List<string>();
@@ -65,7 +66,7 @@ namespace GGJ.CK
         //my audio
         protected AudioSource inter_AudioSource;
 
-        
+
 
 
         private void Awake()
@@ -160,7 +161,7 @@ namespace GGJ.CK
                             break;
                         case "Room21Door":
                             num = 7;
-                            
+
                             break;
                         case "Room22Door":
                             num = 8;
@@ -189,7 +190,25 @@ namespace GGJ.CK
                     gameController.TeleportPlayer(num);
                     Destroy(this);
                     if (gameObject.tag.Equals("Portal")) StartCoroutine(DestroySelf());
-
+                    break;
+                case USE.END:
+                    switch (gameController.gameEnding)
+                    {
+                        case GameController.ENDING.GOODENDING1:
+                            Debug.Log("GOOD ENDING 1 END GAME !!");
+                            break;
+                        case GameController.ENDING.GOODENDING2:
+                            Debug.Log("GOOD ENDING 2 END GAME !!");
+                            break;
+                        case GameController.ENDING.BADENDING1:
+                            Debug.Log("BAD ENDING 1 END GAME !!");
+                            break;
+                        case GameController.ENDING.BADENDING2:
+                            CameraManager.instance.cameraList[0].gameObject.SetActive(false);
+                            CameraManager.instance.cameraList[1].gameObject.SetActive(true);
+                            break;
+                    }
+                    gameController.playerHud.SetActive(false);
                     break;
             }
         }
@@ -227,7 +246,7 @@ namespace GGJ.CK
             GameObject parentObj = gameObject.transform.parent.gameObject;
             dialogUI.ClearDialogs();
 
-            foreach (string s in dialogChoices) dialogUI.AddDialogChoice(s, itemName,dialogChoices.Count);
+            foreach (string s in dialogChoices) dialogUI.AddDialogChoice(s, itemName, dialogChoices.Count);
 
             dialogUI.ResetKeyState();
             StorySanity.instance.AddSanityPoints(sanityModifier);
@@ -251,7 +270,7 @@ namespace GGJ.CK
             {
                 LocationManager.instance.garageRoomUnlocked = true;
             }
-            
+
 
             Destroy(gameObject, 0.1f);
 

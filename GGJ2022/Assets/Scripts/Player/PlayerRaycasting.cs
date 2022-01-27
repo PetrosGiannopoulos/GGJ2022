@@ -276,6 +276,7 @@ namespace GGJ.CK
         [Space]
         [Header("Interaction Texts")]
         [SerializeField] private string Text_SimpleInteraction = " E Interact";
+        [SerializeField] private string Text_ShowEnding = " E Leave";
         [SerializeField] private string Text_CollectableItem = "Press E to pick up";
         [SerializeField] private string Text_EquipableItem = "Press E to equip";
 
@@ -328,7 +329,10 @@ namespace GGJ.CK
                     
                     teleportReady = true;
                     break;
-                    
+                case InteractableClass.USE.END:
+                    txt = Text_ShowEnding;
+                    break;
+
             }
 
             //else
