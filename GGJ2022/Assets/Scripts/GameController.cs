@@ -35,14 +35,15 @@ public class GameController : MonoBehaviour
         objectDestroyed = false;
         sanityMeter = 10;
 
-        //StartCoroutine(delayTransfer());
+        StartCoroutine(delayTransfer());
         
     }
 
     IEnumerator delayTransfer()
     {
         yield return new WaitForSeconds(2);
-        player.transform.position = LocationManager.instance.GetLocationPos("BadEnding2");
+        //player.transform.position = LocationManager.instance.GetLocationPos("BadEnding2");
+
     }
 
     public void gameOver()
@@ -176,7 +177,7 @@ public class GameController : MonoBehaviour
 
     public void GarageGoodScenario()
     {
-        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItem");
+        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItems");
 
         foreach(GameObject garageItem in garageItems)
         {

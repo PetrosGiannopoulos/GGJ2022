@@ -128,7 +128,15 @@ namespace GGJ.CK
                 case USE.SINGLE:
                     //Do nothing in here
                     Debug.Log("#Interactable# Single Use !!");
-
+                    if (StorySanity.instance.GetStorySanity() >= 0)
+                    {
+                        TextRendererManager.instance.InitHerculesStatueGoodText();
+                    }
+                    else
+                    {
+                        TextRendererManager.instance.InitHerculesStatueBadText();
+                    }
+                    Destroy(gameObject, 0.1f);
                     break;
                 case USE.COLLECT:
                     Debug.Log("#Interactable# collect Use !!");
@@ -161,7 +169,6 @@ namespace GGJ.CK
                             break;
                         case "Room21Door":
                             num = 7;
-
                             break;
                         case "Room22Door":
                             num = 8;
