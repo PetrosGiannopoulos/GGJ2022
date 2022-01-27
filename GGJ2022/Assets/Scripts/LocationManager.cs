@@ -19,6 +19,7 @@ public class LocationManager : MonoBehaviour
     public bool room22Unlocked = false;
     public bool room31Unlocked = false;
     public bool room32Unlocked = false;
+    public bool garageRoomUnlocked = false;
     
 
     // Start is called before the first frame update
