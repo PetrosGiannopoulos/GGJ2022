@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public enum ENDING
+    {
+        GOODENDING1,
+        GOODENDING2,
+        BADENDING1,
+        BADENDING2,
+    }
+
+    public ENDING gameEnding = ENDING.BADENDING2;
     private int sanityMeter;
     public List<Transform> teleportLocations = new List<Transform>();
     public Transform museumPlayerTransform;
@@ -17,6 +26,7 @@ public class GameController : MonoBehaviour
     public bool secondRoomIsGood = true;
     public bool thirdRoomIsGood = false;
     public bool thirdRoomIsNeutral = false;
+    public GameObject playerHud;
 
     // Start is called before the first frame update
     void Start()
