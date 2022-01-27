@@ -49,7 +49,7 @@ namespace GGJ.CK
             TELEPORT
         }
         public USE MyUse = USE.UNSPECIFIED;
-
+        public List<string> dialogChoices = new List<string>();
         public string itemName;
         public int sanityModifier;
         public bool willReturnToMuseum;
@@ -224,10 +224,15 @@ namespace GGJ.CK
 
         public void PickupObject()
         {
-
-
             GameObject parentObj = gameObject.transform.parent.gameObject;
-            List<string> dialogChoices = new List<string>();
+            dialogUI.ClearDialogs();
+
+            foreach (string s in dialogChoices) dialogUI.AddDialogChoice(s, itemName);
+
+            dialogUI.ResetKeyState();
+            StorySanity.instance.AddSanityPoints(sanityModifier);
+
+            /*
             switch (parentObj.name)
             {
                 case "Belt":
@@ -270,7 +275,7 @@ namespace GGJ.CK
                     {
                         GameObject childGO = gameObject.transform.GetChild(i).gameObject;
                         if (childGO.name.Equals("PickupTrigger")) pickupTrigger = childGO;
-                    }*/
+                    }
                     Destroy(gameObject, 0.1f);
                     //Destroy(pickupTrigger,0.1f);
                     break;
@@ -337,6 +342,7 @@ namespace GGJ.CK
                     break;
                     
             }
+            */
         }
 
         protected void PlayOneShot(AudioClip sfx)
