@@ -227,10 +227,33 @@ namespace GGJ.CK
             GameObject parentObj = gameObject.transform.parent.gameObject;
             dialogUI.ClearDialogs();
 
-            foreach (string s in dialogChoices) dialogUI.AddDialogChoice(s, itemName);
+            foreach (string s in dialogChoices) dialogUI.AddDialogChoice(s, itemName,dialogChoices.Count);
 
             dialogUI.ResetKeyState();
             StorySanity.instance.AddSanityPoints(sanityModifier);
+
+            if (parentObj.name.Equals("tv"))
+            {
+                GameObject.Find("Room22Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            else if (parentObj.name.Equals("Teddy_Bear"))
+            {
+                Debug.Log("Room1 Unlocking");
+                LocationManager.instance.room1Unlocked = true;
+                GameObject.Find("Room1Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            else if (parentObj.name.Equals("PhoneClean"))
+            {
+                LocationManager.instance.room21Unlocked = true;
+                GameObject.Find("Room21Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
+            else if (parentObj.name.Equals("DeadBodyCovered"))
+            {
+                LocationManager.instance.garageRoomUnlocked = true;
+            }
+            
+
+            Destroy(gameObject, 0.1f);
 
             /*
             switch (parentObj.name)

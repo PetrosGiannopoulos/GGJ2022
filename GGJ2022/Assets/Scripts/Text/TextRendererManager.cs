@@ -77,7 +77,7 @@ public class TextRendererManager : MonoBehaviour
         //RenderTypedText(lorem, 3);
         //RenderMultipleTypedText(phrases, 3);
         //BlackenScreenAndRenderTypedText(lorem, 3, 1);
-        BlackenScreenAndRenderMultipleTypedText(phrases, 3, 1);
+        //BlackenScreenAndRenderMultipleTypedText(phrases, 3, 1);
     }
     // Update is called once per frame
     void Update()

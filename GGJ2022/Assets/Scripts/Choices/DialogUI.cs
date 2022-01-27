@@ -30,10 +30,10 @@ public class DialogUI : MonoBehaviour
 
     }
 
-    public void AddDialogChoice(string dialogText,string itemName)
+    public void AddDialogChoice(string dialogText,string itemName, int maxDialogs)
     {
         currentGameObjectName = itemName;
-        if (dialogTextObjs.Count >= 2) ClearDialogs();
+        if (dialogTextObjs.Count >= maxDialogs) ClearDialogs();
 
         var dialog = Instantiate(dialogTextPrefab, transform);
 
@@ -89,6 +89,13 @@ public class DialogUI : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SetSelection(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (dialogTextObjs.Count > 2)
+            {
+                SetSelection(2);
+            }
         }
 
 
@@ -166,6 +173,42 @@ public class DialogUI : MonoBehaviour
 
             StorySanity.instance.AddSanityPoints(+1);
             Destroy(pickupTrigger, 0.1f);
+        }
+
+        if(currentGameObjectName == "DeadBodyCovered")
+        {
+            if (dialogTextObjs.Count == 2)
+            {
+                if (selectionIndex == 0)
+                {
+                    //Do nothing
+                    StorySanity.instance.AddSanityPoints(-1);
+                }
+                else if(selectionIndex == 1)
+                {
+                    //Pickpocket and Hide
+                    StorySanity.instance.AddSanityPoints(-2);
+                }
+            }
+            else if(dialogTextObjs.Count == 3)
+            {
+                if (selectionIndex == 0)
+                {
+                    //Report to police
+                    StorySanity.instance.AddSanityPoints(1);
+                }
+                else if (selectionIndex == 1)
+                {
+                    //Do nothing
+                    
+                }
+                else if(selectionIndex == 2)
+                {
+                    //Pickpocket
+                    StorySanity.instance.AddSanityPoints(-1);
+                }
+            }
+        
         }
 
         currentGameObjectName = "";

@@ -135,11 +135,12 @@ public class GameController : MonoBehaviour
             if (StorySanity.instance.GetStorySanity() >= 0)
             {
                 //garage good scenario
-                
+                GarageGoodScenario();
             }
             else
             {
                 //garage bad scenario
+                GarageBadScenario();
             }
         }
         else if (num == 8)
@@ -149,17 +150,90 @@ public class GameController : MonoBehaviour
             if (StorySanity.instance.GetStorySanity() >= 0)
             {
                 //garage good scenario
-
+                GarageGoodScenario();
             }
             else
             {
                 //garage bad scenario
+                GarageBadScenario();
             }
         }
 
 
         player.transform.position = teleportLocations[num].position;
         willReturnToMuseum = !willReturnToMuseum;
+    }
+
+    public void GarageGoodScenario()
+    {
+        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItem");
+
+        foreach(GameObject garageItem in garageItems)
+        {
+            string parentName = garageItem.transform.parent.gameObject.name;
+            switch (parentName)
+            {
+                case "Drugs":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    break;
+                case "Hand-Cuffs":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    break;
+                case "Doll":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    break;
+                case "MoneyBriefcase":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    break;
+                case "DeadBodyCovered":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 0;
+
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Clear();
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Do nothing.");
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Pickpocket and Hide.");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+       
+
+    }
+
+    public void GarageBadScenario()
+    {
+        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItem");
+
+        foreach (GameObject garageItem in garageItems)
+        {
+            string parentName = garageItem.transform.parent.gameObject.name;
+            switch (parentName)
+            {
+                case "Drugs":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    break;
+                case "Hand-Cuffs":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    break;
+                case "Doll":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    break;
+                case "MoneyBriefcase":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    break;
+                case "DeadBodyCovered":
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 0;
+
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Clear();
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Report to police.");
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Do nothing.");
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Pickpocket.");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public int GetSanity()
