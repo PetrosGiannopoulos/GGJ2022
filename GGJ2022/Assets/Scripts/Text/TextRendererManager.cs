@@ -39,6 +39,7 @@ public class TextRendererManager : MonoBehaviour
 
     public void InitDialogScene()
     {
+        GameController.instance.playerHud.SetActive(false);
         textCanvas.enabled = true;
         ShowContinue();
     }
@@ -47,6 +48,7 @@ public class TextRendererManager : MonoBehaviour
     {
         textCanvas.enabled = false;
         HideContinue();
+        GameController.instance.playerHud.SetActive(true);
     }
 
     public void ShowContinue()

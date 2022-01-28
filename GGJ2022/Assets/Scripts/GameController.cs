@@ -5,12 +5,29 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+
+    public static GameController instance;
+
     public enum ENDING
     {
         GOODENDING1,
         GOODENDING2,
         BADENDING1,
         BADENDING2,
+    }
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     public ENDING gameEnding = ENDING.BADENDING2;
