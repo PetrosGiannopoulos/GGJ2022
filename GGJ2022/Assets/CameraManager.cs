@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
-    public List<Camera> cameraList;
+    public List<Camera> cameraList = new List<Camera>();
 
     void Awake()
     {
@@ -20,6 +20,23 @@ public class CameraManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void DisableMainCamera()
+    {
+        Camera.main.gameObject.SetActive(false);
+    }
+
+    public void EnableCamera(string name)
+    {
+        DisableMainCamera();
+        foreach(Camera cam in cameraList) {
+            if (cam.gameObject.name.Equals(name))
+            {
+                cam.gameObject.SetActive(true);
+                return;
+            }
+        }
     }
 
 }

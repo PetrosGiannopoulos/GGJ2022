@@ -16,7 +16,7 @@ namespace GGJ.CK
     {
 
         GameController gameController;
-        DialogUI dialogUI;
+        public DialogUI dialogUI;
         public enum TYPE
         {
             UNSPECIFIED,
@@ -180,6 +180,9 @@ namespace GGJ.CK
                             Debug.Log("EnteringDarkPainting");
                             num = 10;
                             break;
+                        case "Portal":
+                            num = 13;
+                            break;
                         default:
                             break;
                     }
@@ -194,7 +197,8 @@ namespace GGJ.CK
                         AudioManager.instance.Stop(gameController.songs[num]);
                         AudioManager.instance.PlayFadeIn("MainTheme");
                     }
-                    gameController.TeleportPlayer(num);
+                    //gameController.TeleportPlayer(num);
+                    gameController.TeleportPlayer(itemName);
                     Destroy(this);
                     if (gameObject.tag.Equals("Portal")) StartCoroutine(DestroySelf());
                     break;
@@ -203,21 +207,41 @@ namespace GGJ.CK
                     {
                         case GameController.ENDING.GOODENDING1:
                             Debug.Log("GOOD ENDING 1 END GAME !!");
+                            CameraManager.instance.EnableCamera("GoodEnding1Camera");
+                            
                             break;
                         case GameController.ENDING.GOODENDING2:
                             Debug.Log("GOOD ENDING 2 END GAME !!");
+                            CameraManager.instance.EnableCamera("GoodEnding2Camera");
                             break;
                         case GameController.ENDING.BADENDING1:
                             Debug.Log("BAD ENDING 1 END GAME !!");
+                            CameraManager.instance.EnableCamera("BadEnding1Camera");
                             break;
                         case GameController.ENDING.BADENDING2:
-                            CameraManager.instance.cameraList[0].gameObject.SetActive(false);
-                            CameraManager.instance.cameraList[1].gameObject.SetActive(true);
+                            CameraManager.instance.EnableCamera("BadEnding2Camera");
+
+                            //Start falling to death
+                            GameObject fallingGuy = GameObject.Find("FallingGuy");
+                            //fallingGuy.GetComponent<Animator>().Play("Falling");
+                            StartCoroutine(DelayFall(0.6f));
+
                             break;
                     }
                     gameController.playerHud.SetActive(false);
                     break;
             }
+        }
+
+        IEnumerator DelayFall(float delayTime)
+        {
+
+            GameObject fallingGuy = GameObject.Find("FallingGuy");
+            fallingGuy.GetComponent<Animator>().Play("Falling");
+            yield return new WaitForSeconds(delayTime);
+
+            fallingGuy.GetComponent<Animator>().Play("FallingDown");
+            
         }
 
         IEnumerator DestroySelf()
@@ -253,6 +277,7 @@ namespace GGJ.CK
             GameObject parentObj = gameObject.transform.parent.gameObject;
             dialogUI.ClearDialogs();
 
+            Debug.Log($"Item Name: {parentObj.name}, dialogChoicesCount: {dialogChoices.Count}");
             foreach (string s in dialogChoices) dialogUI.AddDialogChoice(s, itemName, dialogChoices.Count);
 
             dialogUI.ResetKeyState();
@@ -261,6 +286,8 @@ namespace GGJ.CK
             if (parentObj.name.Equals("tv"))
             {
                 GameObject.Find("Room22Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
+                GameObject tvImage = GameObject.Find("TVImage");
+                tvImage.GetComponent<TVAnimation>().InitPlayback();
             }
             else if (parentObj.name.Equals("Teddy_Bear"))
             {
@@ -279,7 +306,7 @@ namespace GGJ.CK
             }
 
 
-            Destroy(gameObject, 0.1f);
+            if(sanityModifier!=0)Destroy(gameObject, 0.1f);
 
             /*
             switch (parentObj.name)
