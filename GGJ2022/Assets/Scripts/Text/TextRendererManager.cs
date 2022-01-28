@@ -15,6 +15,9 @@ public class TextRendererManager : MonoBehaviour
     public Image continueImage;
     public TextMeshProUGUI continueText;
 
+    public List<TextAsset> herculesGoodText = new List<TextAsset>();
+    public List<TextAsset> herculesBadText = new List<TextAsset>();
+
     bool isTextDisplayed = false;
     bool isSkipped = false;
 
@@ -58,12 +61,28 @@ public class TextRendererManager : MonoBehaviour
         continueText.enabled = false;
     }
 
+    public void InitHerculesStatueGoodText()
+    {
+        //Debug.Log(hercules123.text);
+        //BlackenScreenAndRenderTypedText(hercules123.text, 3, 1);
+        List<string> multipleText = new List<string>();
+        foreach (TextAsset textAsset in herculesGoodText) multipleText.Add(textAsset.text);
+        BlackenScreenAndRenderMultipleTypedText(multipleText, 3, 1);
+    }
 
+    public void InitHerculesStatueBadText()
+    {
+        //Debug.Log(hercules123.text);
+        //BlackenScreenAndRenderTypedText(hercules123.text, 3, 1);
+        List<string> multipleText = new List<string>();
+        foreach (TextAsset textAsset in herculesBadText) multipleText.Add(textAsset.text);
+        BlackenScreenAndRenderMultipleTypedText(multipleText, 3, 1);
+    }
 
     string lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet gravida enim. Ut pulvinar dui aliquam erat consectetur pharetra a mattis lectus. Donec finibus, nibh in pellentesque iaculis, lacus elit auctor eros, ac fringilla lacus turpis at turpis. Aliquam erat volutpat. In pharetra lobortis sapien, a hendrerit nunc maximus vitae";
 
     List<string> phrases = new List<string>();
-
+    
     private void Start()
     {
 
@@ -78,6 +97,7 @@ public class TextRendererManager : MonoBehaviour
         //RenderMultipleTypedText(phrases, 3);
         //BlackenScreenAndRenderTypedText(lorem, 3, 1);
         //BlackenScreenAndRenderMultipleTypedText(phrases, 3, 1);
+        //InitHerculesStatueGoodText();
     }
     // Update is called once per frame
     void Update()

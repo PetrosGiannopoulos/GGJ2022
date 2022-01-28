@@ -240,6 +240,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 0
   MyUse: 9
+  dialogChoices: []
+  itemName: Portal
+  sanityModifier: 0
+  willReturnToMuseum: 0
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 0

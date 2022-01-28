@@ -28,21 +28,25 @@ public class GameController : MonoBehaviour
     public bool thirdRoomIsNeutral = false;
     public GameObject playerHud;
 
+    public List<Material> endingMaterials = new List<Material>();
+    public MeshRenderer endingRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
         objectPicked = false;
         objectDestroyed = false;
-        sanityMeter = 10;
+        sanityMeter = 50;
 
-        //StartCoroutine(delayTransfer());
+        StartCoroutine(delayTransfer());
         
     }
 
     IEnumerator delayTransfer()
     {
         yield return new WaitForSeconds(2);
-        player.transform.position = LocationManager.instance.GetLocationPos("BadEnding2");
+        //player.transform.position = LocationManager.instance.GetLocationPos("BadEnding2");
+
     }
 
     public void gameOver()
@@ -119,64 +123,190 @@ public class GameController : MonoBehaviour
 
     public void TeleportPlayer(int num)
     {
-        Debug.Log("TELEPORT!!");
+        Debug.Log($"TELEPORT!!Number: {num}");
         //player.transform.position = GetNextRoom().position;
         if (num == 6)
         {
             if (LocationManager.instance.defaultRoom1) StorySanity.instance.AddSanityPoints(-1);
             //Exiting Room 1
-            if (StorySanity.instance.GetStorySanity() >=0)
+            if (StorySanity.instance.GetStorySanity() >45)
             {
-                //go to Clean Room
+                //go to Clean Room 2.1
                 teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointRoom2");
             }
             else
             {
-                //go to Messy Room
+                //go to Messy Room 2.2 <=45
                 teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointRoom3");
             }
 
         }
         else if (num == 7)
         {
-
+            //From 2.1
             teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointGarage");
 
-            if (StorySanity.instance.GetStorySanity() >= 0)
+            if (StorySanity.instance.GetStorySanity() >=60)
             {
-                //garage good scenario
+                //garage good scenario 3.1
                 GarageGoodScenario();
             }
             else
             {
-                //garage bad scenario
+                //garage bad scenario 3.2 <60
                 GarageBadScenario();
             }
         }
         else if (num == 8)
         {
+            //From 2.2
             teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointGarage");
-
-            if (StorySanity.instance.GetStorySanity() >= 0)
+            GameObject tvImage = GameObject.Find("TVImage");
+            tvImage.GetComponent<TVAnimation>().StopPlayback();
+            if (StorySanity.instance.GetStorySanity() >= 48)
             {
-                //garage good scenario
+                //garage good scenario 3.1
                 GarageGoodScenario();
             }
             else
             {
-                //garage bad scenario
+                //garage bad scenario 3.2 <48
                 GarageBadScenario();
             }
+        }
+        else if (num == 12)
+        {
+            Debug.Log("TheaterPositionSpawn");
+            //Go to Room 4
+            teleportLocations[num].position = LocationManager.instance.GetLocationPos("TheaterPosition");
+        }
+        else if (num == 13)
+        {
+            //Go to Dark Room Ending
+
+            float value = StorySanity.instance.GetStorySanity();
+            if (value >= 75)
+            {
+                endingRenderer.material = endingMaterials[0];
+            }
+            else if (value >= 50)
+            {
+                endingRenderer.material = endingMaterials[1];
+            }
+            else if(value >= 25)
+            {
+                endingRenderer.material = endingMaterials[2];
+            }
+            else
+            {
+                endingRenderer.material = endingMaterials[3];
+            }
+            
+            teleportLocations[num].position = LocationManager.instance.GetLocationPos("DarknessRoomSpawnPoint");
+            Debug.Log("DarkRoomTeleport");
         }
 
 
         player.transform.position = teleportLocations[num].position;
-        willReturnToMuseum = !willReturnToMuseum;
+        //willReturnToMuseum = !willReturnToMuseum;
+    }
+
+    public void TeleportPlayer(string name)
+    {
+        if (name.Equals("Room1Door"))
+        {
+            if (LocationManager.instance.defaultRoom1) StorySanity.instance.AddSanityPoints(-1);
+            //Exiting Room 1
+            if (StorySanity.instance.GetStorySanity() > 45)
+            {
+                //go to Clean Room 2.1
+                player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom2");
+            }
+            else
+            {
+                //go to Messy Room 2.2 <=45
+                player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom3");
+            }
+        }
+        else if (name.Equals("Room21Door"))
+        {
+            player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointGarage");
+
+            if (StorySanity.instance.GetStorySanity() >= 60)
+            {
+                //garage good scenario 3.1
+                GarageGoodScenario();
+            }
+            else
+            {
+                //garage bad scenario 3.2 <60
+                GarageBadScenario();
+            }
+        }
+        else if (name.Equals("Room22Door"))
+        {
+            //From 2.2
+            player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointGarage");
+            GameObject tvImage = GameObject.Find("TVImage");
+            tvImage.GetComponent<TVAnimation>().StopPlayback();
+            if (StorySanity.instance.GetStorySanity() >= 48)
+            {
+                //garage good scenario 3.1
+                GarageGoodScenario();
+            }
+            else
+            {
+                //garage bad scenario 3.2 <48
+                GarageBadScenario();
+            }
+        }
+        else if (name.Equals("Theater"))
+        {
+            player.transform.position = LocationManager.instance.GetLocationPos("TheaterPosition");
+        }
+        else if (name.Equals("Portal"))
+        {
+            float value = StorySanity.instance.GetStorySanity();
+            if (value >= 75)
+            {
+                endingRenderer.material = endingMaterials[0];
+                gameEnding = ENDING.GOODENDING1;
+            }
+            else if (value >= 50)
+            {
+                endingRenderer.material = endingMaterials[1];
+                gameEnding = ENDING.GOODENDING2;
+            }
+            else if (value >= 25)
+            {
+                endingRenderer.material = endingMaterials[2];
+                gameEnding = ENDING.BADENDING1;
+            }
+            else
+            {
+                endingRenderer.material = endingMaterials[3];
+                gameEnding = ENDING.BADENDING2;
+            }
+
+            player.transform.position = LocationManager.instance.GetLocationPos("DarknessRoomSpawnPoint");
+        }
+        else if (name.Equals("Paint1"))
+        {
+            player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom1");
+        }
+        else if (name.Equals("Paint2"))
+        {
+            player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom2");
+        }
+        else if (name.Equals("Paint3"))
+        {
+            player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom3");
+        }
     }
 
     public void GarageGoodScenario()
     {
-        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItem");
+        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItems");
 
         foreach(GameObject garageItem in garageItems)
         {
@@ -184,16 +314,16 @@ public class GameController : MonoBehaviour
             switch (parentName)
             {
                 case "Drugs":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 5;
                     break;
                 case "Hand-Cuffs":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 5;
                     break;
                 case "Doll":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 5;
                     break;
                 case "MoneyBriefcase":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -5;
                     break;
                 case "DeadBodyCovered":
                     garageItem.GetComponent<InteractableClass>().sanityModifier = 0;
@@ -201,6 +331,8 @@ public class GameController : MonoBehaviour
                     garageItem.GetComponent<InteractableClass>().dialogChoices.Clear();
                     garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Do nothing.");
                     garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Pickpocket and Hide.");
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Keep Searching.");
+
                     break;
                 default:
                     break;
@@ -213,7 +345,7 @@ public class GameController : MonoBehaviour
 
     public void GarageBadScenario()
     {
-        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItem");
+        GameObject[] garageItems = GameObject.FindGameObjectsWithTag("GarageItems");
 
         foreach (GameObject garageItem in garageItems)
         {
@@ -221,16 +353,16 @@ public class GameController : MonoBehaviour
             switch (parentName)
             {
                 case "Drugs":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -5;
                     break;
                 case "Hand-Cuffs":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -5;
                     break;
                 case "Doll":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = -1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = -5;
                     break;
                 case "MoneyBriefcase":
-                    garageItem.GetComponent<InteractableClass>().sanityModifier = 1;
+                    garageItem.GetComponent<InteractableClass>().sanityModifier = 5;
                     break;
                 case "DeadBodyCovered":
                     garageItem.GetComponent<InteractableClass>().sanityModifier = 0;
@@ -239,6 +371,8 @@ public class GameController : MonoBehaviour
                     garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Report to police.");
                     garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Do nothing.");
                     garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Pickpocket.");
+                    garageItem.GetComponent<InteractableClass>().dialogChoices.Add("Keep Searching.");
+
                     break;
                 default:
                     break;

@@ -9,13 +9,13 @@ public class StorySanity : MonoBehaviour
     public static StorySanity instance;
     public Image sanityImage;
 
-    private float minSanity = -20.0f;
-    private float maxSanity = 20.0f;
+    private int minSanity = 0;
+    private int maxSanity = 100;
 
     
     //Low Values < 0 == Insanity/Madness 
     //Hi Values > 0 == (Wisedom? or safe mind)
-    int currentStorySanity=0;
+    int currentStorySanity=50;
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,14 +35,15 @@ public class StorySanity : MonoBehaviour
     public void AddSanityPoints(int value)
     {
         currentStorySanity += value;
-        Debug.Log($"CurrentSanityPoints: {currentStorySanity}");
+        //Debug.Log($"CurrentSanityPoints: {currentStorySanity}");
 
         sanityImage.fillAmount = GetNormalizedValue();
     }
 
     public float GetNormalizedValue()
     {
-        return (currentStorySanity - minSanity) / (maxSanity - minSanity);
+        //0-1
+        return (currentStorySanity - ((float)minSanity)) / (((float)maxSanity) - ((float)minSanity));
     }
 
     public int GetStorySanity()

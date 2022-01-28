@@ -14,7 +14,7 @@ public class CodeBoard : MonoBehaviour
     private bool interacting = false;
     List<KeyCode> numberKeyCodes = new List<KeyCode>();
     public GameObject playerObj;
-    private float safeDist = 1.5f;
+    private float safeDist = 2f;
     public GameObject portalVFXPrefab;
     GameObject portalVFX;
 
