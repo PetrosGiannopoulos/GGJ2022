@@ -165,12 +165,12 @@ public class DialogUI : MonoBehaviour
 
         if(currentGameObjectName == "DrugsMessy" && selectionIndex == 0)
         {
-            StorySanity.instance.AddSanityPoints(-15);
+            StorySanity.instance.AddSanityPoints(15);
             DestroyInteraction();
         }
         else if (currentGameObjectName == "DrugsMessy" && selectionIndex == 1)
         {
-            StorySanity.instance.AddSanityPoints(15);
+            StorySanity.instance.AddSanityPoints(-15);
             DestroyInteraction();
         }
 
