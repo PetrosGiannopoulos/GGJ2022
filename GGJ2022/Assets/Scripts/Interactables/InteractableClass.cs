@@ -208,7 +208,6 @@ namespace GGJ.CK
                         case GameController.ENDING.GOODENDING1:
                             Debug.Log("GOOD ENDING 1 END GAME !!");
                             CameraManager.instance.EnableCamera("GoodEnding1Camera");
-                            
                             break;
                         case GameController.ENDING.GOODENDING2:
                             Debug.Log("GOOD ENDING 2 END GAME !!");
@@ -223,8 +222,8 @@ namespace GGJ.CK
 
                             //Start falling to death
                             GameObject fallingGuy = GameObject.Find("FallingGuy");
-                            //fallingGuy.GetComponent<Animator>().Play("Falling");
-                            StartCoroutine(DelayFall(0.6f));
+                            fallingGuy.GetComponent<Rigidbody>().isKinematic = false;
+                            //StartCoroutine(DelayFall(0.6f));
 
                             break;
                     }
