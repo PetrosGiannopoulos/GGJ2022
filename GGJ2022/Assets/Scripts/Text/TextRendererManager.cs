@@ -47,6 +47,7 @@ public class TextRendererManager : MonoBehaviour
     {
         textCanvas.enabled = false;
         HideContinue();
+        
     }
 
     public void ShowContinue()
