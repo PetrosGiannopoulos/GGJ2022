@@ -14,7 +14,7 @@ public class CodeBoard : MonoBehaviour
     private bool interacting = false;
     List<KeyCode> numberKeyCodes = new List<KeyCode>();
     public GameObject playerObj;
-    private float safeDist = 2f;
+    private float safeDist = 3f;
     public GameObject portalVFXPrefab;
     GameObject portalVFX;
 
@@ -51,10 +51,18 @@ public class CodeBoard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return)) EnterButton();
         }
 
-        
 
-        if (Vector3.Distance(playerObj.transform.position, transform.position) < safeDist) interacting = true;
-        else interacting = false;
+
+        if (Vector3.Distance(playerObj.transform.position, transform.position) < safeDist)
+        {
+            interacting = true;
+            transform.parent.gameObject.GetComponent<Outline>().enabled = true;
+        }
+        else
+        {
+            interacting = false;
+            transform.parent.gameObject.GetComponent<Outline>().enabled = false;
+        }
     }
 
     public void AddNumber(int n)

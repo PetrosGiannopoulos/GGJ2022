@@ -10,6 +10,7 @@ public class TextRendererManager : MonoBehaviour
     public static TextRendererManager instance;
     public Canvas textCanvas;
     public TextMeshProUGUI textForm;
+    public TextMeshProUGUI storyForm;
     public Image blackScreen;
 
     public Image continueImage;
@@ -17,6 +18,9 @@ public class TextRendererManager : MonoBehaviour
 
     public List<TextAsset> herculesGoodText = new List<TextAsset>();
     public List<TextAsset> herculesBadText = new List<TextAsset>();
+
+    public List<TextAsset> pickupText = new List<TextAsset>();
+    
 
     bool isTextDisplayed = false;
     bool isSkipped = false;
@@ -39,7 +43,7 @@ public class TextRendererManager : MonoBehaviour
 
     public void InitDialogScene()
     {
-        GameController.instance.playerHud.SetActive(false);
+        //GameController.instance.playerHud.SetActive(false);
         textCanvas.enabled = true;
         ShowContinue();
     }
@@ -48,7 +52,23 @@ public class TextRendererManager : MonoBehaviour
     {
         textCanvas.enabled = false;
         HideContinue();
-        GameController.instance.playerHud.SetActive(true);
+        //GameController.instance.playerHud.SetActive(true);
+    }
+
+    public void SetPickupText(string name)
+    {
+        textCanvas.enabled = false;
+        textCanvas.enabled = true;
+        foreach (TextAsset text in pickupText)
+        {
+            if (text.name.Contains(name))
+            {
+                RenderText(text.text, 5, 1);
+                return;
+            }
+        }
+
+        
     }
 
     public void ShowContinue()
@@ -94,9 +114,9 @@ public class TextRendererManager : MonoBehaviour
         phrases.Add("r dui aliquam erat consectetur pharetra a m");
         phrases.Add(", nibh in pellentesque iaculis, lacus eli");
 
-        //RenderText("Hello World", 3);
+        //RenderText(lorem, 3,1);
         //RenderTypedText(lorem, 3);
-        //RenderMultipleTypedText(phrases, 3);
+        //RenderMultipleTypedText(phrases, 3,1);
         //BlackenScreenAndRenderTypedText(lorem, 3, 1);
         //BlackenScreenAndRenderMultipleTypedText(phrases, 3, 1);
         //InitHerculesStatueGoodText();
@@ -176,38 +196,50 @@ public class TextRendererManager : MonoBehaviour
 
         RenderMultipleTypedText(multipleText, textDuration);
 
-    }
-
-    public void RenderText(string text, float duration)
-    {
-        StartCoroutine(DelayText(text,duration));
-    }
-
-    IEnumerator DelayText(string text, float duration)
-    {
-        textForm.horizontalAlignment = HorizontalAlignmentOptions.Center;
-        textForm.text = text;
-        yield return new WaitForSeconds(duration);
-        textForm.text = "";
-        textForm.horizontalAlignment = HorizontalAlignmentOptions.Left;
-    }
-
-    
-    public void RenderTypedText(string text, float duration)
-    {
-
-        StartCoroutine(DelayTyping(text,renderDelayTime, duration));
         
     }
 
-    IEnumerator DelayTyping(string text, float delayTime, float duration)
+    public void RenderText(string text, float duration,int type=0)
     {
-        textForm.text = "";
+        StartCoroutine(DelayText(text,duration,type));
+    }
+
+    IEnumerator DelayText(string text, float duration,int type=0)
+    {
+
+        TextMeshProUGUI dynamicTextForm = null;
+
+        if (type == 0) dynamicTextForm = textForm;
+        else dynamicTextForm = storyForm;
+
+        dynamicTextForm.horizontalAlignment = HorizontalAlignmentOptions.Center;
+        dynamicTextForm.text = text;
+        yield return new WaitForSeconds(duration);
+        dynamicTextForm.text = "";
+        dynamicTextForm.horizontalAlignment = HorizontalAlignmentOptions.Left;
+    }
+
+    
+    public void RenderTypedText(string text, float duration, int type=0)
+    {
+
+        StartCoroutine(DelayTyping(text,renderDelayTime, duration,type));
+        
+    }
+
+    IEnumerator DelayTyping(string text, float delayTime, float duration,int type=0)
+    {
+
+        TextMeshProUGUI dynamicTextForm = null; ;
+        if (type == 0) dynamicTextForm = textForm;
+        else dynamicTextForm = storyForm;
+
+        dynamicTextForm.text = "";
         Debug.Log("Typing");
         foreach (char c in text)
         {
             yield return new WaitForSeconds(delayTime);
-            textForm.text += c;
+            dynamicTextForm.text += c;
         }
 
         yield return new WaitForSeconds(duration);
@@ -216,20 +248,22 @@ public class TextRendererManager : MonoBehaviour
         
     }
 
-    IEnumerator DelayMultipleTyping(List<string> multipleText, float delayTime, float duration)
+    IEnumerator DelayMultipleTyping(List<string> multipleText, float delayTime, float duration,int type)
     {
         InitDialogScene();
-
+        TextMeshProUGUI dynamicTextForm = null; ;
+        if (type == 0) dynamicTextForm = textForm;
+        else dynamicTextForm = storyForm;
 
         for (int i = 0; i < multipleText.Count; i++)
         {
             string s = multipleText[i];
 
-            textForm.text = "";
+            dynamicTextForm.text = "";
             foreach (char c in s)
             {
                 yield return new WaitForSeconds(delayTime);
-                textForm.text += c;
+                dynamicTextForm.text += c;
                 if (isSkipped)break;
             }
 
@@ -253,8 +287,8 @@ public class TextRendererManager : MonoBehaviour
         EndDialogScene();
     }
 
-    public void RenderMultipleTypedText(List<string> multipleText, float duration)
+    public void RenderMultipleTypedText(List<string> multipleText, float duration, int type=0)
     {
-        StartCoroutine(DelayMultipleTyping(multipleText, renderDelayTime,duration));
+        StartCoroutine(DelayMultipleTyping(multipleText, renderDelayTime,duration,type));
     }
 }

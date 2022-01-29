@@ -9,6 +9,8 @@ public class TVAnimation : MonoBehaviour
 
     VideoPlayer videoPlayer;
     public Sprite breakingNewsImage;
+    bool isNoise = false;
+    bool isPlaying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,18 +27,41 @@ public class TVAnimation : MonoBehaviour
         GetComponent<Image>().material.renderQueue = 3000;*/
         //videoPlayer.Play();
 
+        GetComponent<Image>().material.SetColor("_BaseColor", new Color(1, 1, 1));
         GetComponent<Image>().material.SetTexture("_BaseMap", breakingNewsImage.texture);
     }
 
     private void VideoPlayer_prepareCompleted(VideoPlayer source)
     {
         source.Play();
+        isPlaying = true;
         
     }
 
     public void StopPlayback()
     {
         videoPlayer.Stop();
+        GetComponent<Image>().material.SetColor("_BaseColor", new Color(0,0,0));
+        GetComponent<Image>().material.SetTexture("_BaseMap", null);
+        //if (isNoise == false) SetMovie();
+        //isPlaying = false;
+    }
+
+
+    public void SetMovie()
+    {
+        GetComponent<Image>().material.SetTexture("_BaseMap", breakingNewsImage.texture);
+        GetComponent<Image>().material.SetColor("_BaseColor", new Color(1, 1, 1));
+    }
+
+    public void SetNoise()
+    {
+        isNoise = true;
+    }
+
+    public bool GetNoise()
+    {
+        return isNoise;
     }
 
     public void InitPlayback()
@@ -51,6 +76,7 @@ public class TVAnimation : MonoBehaviour
         videoPlayer.Prepare();
 
         GetComponent<Image>().material.renderQueue = 3000;
+        
     }
 
     // Update is called once per frame

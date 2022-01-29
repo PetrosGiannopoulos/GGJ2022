@@ -41,7 +41,12 @@ public class DialogUI : MonoBehaviour
         GameObject dialogTextObj = dialog.transform.GetChild(0).gameObject;
         dialogTextObj.GetComponent<TextMeshProUGUI>().text = dialogText;
 
-        if (dialogTextObjs.Count == 0) dialogTextObj.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+        if (dialogTextObjs.Count == 0)
+        {
+            dialogTextObj.transform.GetChild(0).gameObject.GetComponent<Image>().enabled = true;
+            
+        }
+        SetSelection(0);
 
         dialogTextObjs.Add(dialog);
     }
@@ -107,6 +112,7 @@ public class DialogUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) && dialogTextObjs.Count>0 && isKeyReset)
         {
+            //Debug.Log($"ItemName: {currentGameObjectName}, Count: {dialogTextObjs.Count}");
             //Close Dialog and Implement Choice Result
             //Debug.Log(selectionIndex);
             int dialogCount = dialogTextObjs.Count;
@@ -121,6 +127,7 @@ public class DialogUI : MonoBehaviour
 
     private void ImplementChoice(int dialogCount)
     {
+        
         if (currentGameObjectName == "Belt" && selectionIndex == 0)
         {
 
@@ -129,12 +136,12 @@ public class DialogUI : MonoBehaviour
             StorySanity.instance.AddSanityPoints(+5);
             GameObject belt = GameObject.Find(currentGameObjectName);
             GameObject throwAwayPoint = null;
-            
+
             for (int i = 0; i < belt.transform.childCount; i++)
             {
                 GameObject childGO = belt.transform.GetChild(i).gameObject;
                 if (childGO.name.Equals("ThrowAwayPoint")) throwAwayPoint = childGO;
-                
+
             }
 
             belt.transform.position = throwAwayPoint.transform.position;
@@ -148,21 +155,42 @@ public class DialogUI : MonoBehaviour
             gameController.secondRoomIsGood = false;
             StorySanity.instance.AddSanityPoints(-10);
             DestroyInteraction();
-           
+
         }
-        
-        if (currentGameObjectName == "PhoneClean" && selectionIndex==0)
+
+        if (currentGameObjectName == "PhoneClean" && selectionIndex == 0)
         {
             StorySanity.instance.AddSanityPoints(-10);
             DestroyInteraction();
-            
+
         }
-        else if(currentGameObjectName == "PhoneClean" && selectionIndex == 1)
+        else if (currentGameObjectName == "PhoneClean" && selectionIndex == 1)
         {
-           StorySanity.instance.AddSanityPoints(5);
+            StorySanity.instance.AddSanityPoints(5);
             DestroyInteraction();
         }
 
+        Debug.Log($"ObjName: {currentGameObjectName}, SelcIndex: {selectionIndex}");
+
+        if (currentGameObjectName == "TV" && selectionIndex == 0)
+        {
+
+            StorySanity.instance.AddSanityPoints(3);
+            GameObject tvImage = GameObject.Find("TVImage");
+            //tvImage.GetComponent<TVAnimation>().SetNoise();
+            tvImage.GetComponent<TVAnimation>().StopPlayback();
+            Debug.Log("TV off");
+            DestroyInteraction();
+        }
+        else if (currentGameObjectName == "TV" && selectionIndex == 1)
+        {
+            GameObject tvImage = GameObject.Find("TVImage");
+            tvImage.GetComponent<TVAnimation>().StopPlayback();
+            tvImage.GetComponent<TVAnimation>().SetMovie();
+            
+        }
+        
+        
         if(currentGameObjectName == "DrugsMessy" && selectionIndex == 0)
         {
             StorySanity.instance.AddSanityPoints(15);
