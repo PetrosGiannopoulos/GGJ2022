@@ -39,4 +39,16 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    public GameObject GetCameraObject(string name) {
+        foreach (Camera cam in cameraList)
+        {
+            if (cam.gameObject.name.Equals(name))
+            {
+                
+                return cam.gameObject;
+            }
+        }
+        return null;
+    }
+
 }

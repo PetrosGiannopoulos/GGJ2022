@@ -2,12 +2,14 @@ using GGJ.CK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameController : MonoBehaviour
 {
 
     public static GameController instance;
-
+    public Volume volume;
     public enum ENDING
     {
         GOODENDING1,
@@ -56,7 +58,12 @@ public class GameController : MonoBehaviour
         sanityMeter = 50;
 
         StartCoroutine(delayTransfer());
-        
+
+        VolumeProfile profile = GameController.instance.volume.sharedProfile;
+        DepthOfField dof;
+        profile.TryGet(out dof);
+
+        dof.focalLength.value = 1f;
     }
 
     IEnumerator delayTransfer()
@@ -178,8 +185,8 @@ public class GameController : MonoBehaviour
         {
             //From 2.2
             teleportLocations[num].position = LocationManager.instance.GetLocationPos("SpawnPointGarage");
-            GameObject tvImage = GameObject.Find("TVImage");
-            tvImage.GetComponent<TVAnimation>().StopPlayback();
+            //GameObject tvImage = GameObject.Find("TVImage");
+            //tvImage.GetComponent<TVAnimation>().StopPlayback();
             if (StorySanity.instance.GetStorySanity() >= 48)
             {
                 //garage good scenario 3.1

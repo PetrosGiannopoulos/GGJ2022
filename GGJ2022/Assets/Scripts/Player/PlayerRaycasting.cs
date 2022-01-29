@@ -142,6 +142,11 @@ namespace GGJ.CK
                             if (hit.collider.gameObject.transform.parent != null)
                             {
                                 GameObject parentObj = hit.collider.gameObject.transform.parent.gameObject;
+                                //if (parentObj.name.Equals("TV"))
+                                //{
+                                //    GameObject tvImage = GameObject.Find("TVImage");
+                                //    tvImage.GetComponent<TVAnimation>().InitPlayback();
+                                //}
 
                                 for (int i = 0; i < parentObj.transform.childCount; i++)
                                 {
@@ -178,6 +183,11 @@ namespace GGJ.CK
                         marioPainter.GetComponent<RippleAnimation>().StopPlayback();
                         marioPainter = null;
                     }
+
+                    //GameObject tvImage = GameObject.Find("TVImage");
+                    //tvImage.GetComponent<TVAnimation>().StopPlayback();
+                    
+
                     hitInteractable = null;
                 }
                 #endregion

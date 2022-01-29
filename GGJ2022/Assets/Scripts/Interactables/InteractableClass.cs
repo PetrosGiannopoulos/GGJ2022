@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 
 namespace GGJ.CK
@@ -128,7 +129,7 @@ namespace GGJ.CK
                 case USE.SINGLE:
                     //Do nothing in here
                     Debug.Log("#Interactable# Single Use !!");
-                    if (StorySanity.instance.GetStorySanity() >= 0)
+                    if (StorySanity.instance.GetStorySanity() >= 50)
                     {
                         TextRendererManager.instance.InitHerculesStatueGoodText();
                     }
@@ -208,14 +209,23 @@ namespace GGJ.CK
                         case GameController.ENDING.GOODENDING1:
                             Debug.Log("GOOD ENDING 1 END GAME !!");
                             CameraManager.instance.EnableCamera("GoodEnding1Camera");
+                            GameObject.Find("TherapistGuy").GetComponent<Animator>().Play("Talking");
+                            GameObject.Find("LyingDownGuy").GetComponent<Animator>().Play("Sit");
+                            
+                            StartCoroutine(AnimationDoF(2f,100f));
                             break;
                         case GameController.ENDING.GOODENDING2:
                             Debug.Log("GOOD ENDING 2 END GAME !!");
                             CameraManager.instance.EnableCamera("GoodEnding2Camera");
+                            CameraManager.instance.GetCameraObject("GoodEnding2Camera").GetComponent<Animator>().Play("GoodEnding2CameraAnimation");
+                            GameObject.Find("WakeUpGuy").GetComponent<Animator>().Play("WakeUp");
+                            StartCoroutine(AnimationDoF(4f,100f));
                             break;
                         case GameController.ENDING.BADENDING1:
                             Debug.Log("BAD ENDING 1 END GAME !!");
                             CameraManager.instance.EnableCamera("BadEnding1Camera");
+                            StartCoroutine(AnimationDoF(2f,100f));
+
                             break;
                         case GameController.ENDING.BADENDING2:
                             CameraManager.instance.EnableCamera("BadEnding2Camera");
@@ -224,11 +234,38 @@ namespace GGJ.CK
                             GameObject fallingGuy = GameObject.Find("FallingGuy");
                             fallingGuy.GetComponent<Rigidbody>().isKinematic = false;
                             //StartCoroutine(DelayFall(0.6f));
+                            StartCoroutine(AnimationDoF(2f,100f));
 
                             break;
                     }
                     gameController.playerHud.SetActive(false);
                     break;
+            }
+        }
+
+        IEnumerator AnimationDoF(float delayTime, float endValue)
+        {
+
+            yield return new WaitForSeconds(delayTime);
+
+            VolumeProfile profile = GameController.instance.volume.sharedProfile;
+            DepthOfField dof;
+            profile.TryGet(out dof);
+
+            float startValue = 1f;
+            //float endValue = 41.7f;
+            //float endValue = 100f;
+            float step = 0.4f;
+
+            dof.focalLength.value = startValue;
+            
+            float value = dof.focalLength.value;
+
+            while (value < endValue)
+            {
+                value += step;
+                dof.focalLength.value = value;
+                yield return new WaitForSeconds(0.02f);
             }
         }
 
@@ -282,7 +319,9 @@ namespace GGJ.CK
             dialogUI.ResetKeyState();
             StorySanity.instance.AddSanityPoints(sanityModifier);
 
-            if (parentObj.name.Equals("tv"))
+            AddDialogText();
+
+            if (parentObj.name.Equals("TV"))
             {
                 GameObject.Find("Room22Door").transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = true;
                 GameObject tvImage = GameObject.Find("TVImage");
@@ -420,6 +459,13 @@ namespace GGJ.CK
             */
         }
 
+        public void AddDialogText()
+        {
+            GameObject parentObj = gameObject.transform.parent.gameObject;
+
+            TextRendererManager.instance.SetPickupText(parentObj.name);
+
+        }
         protected void PlayOneShot(AudioClip sfx)
         {
             if (sfx != null || inter_AudioSource != null)
