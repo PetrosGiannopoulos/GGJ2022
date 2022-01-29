@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using GGJ.CK;
 
 public class TextRendererManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class TextRendererManager : MonoBehaviour
     public Canvas textCanvas;
     public TextMeshProUGUI textForm;
     public TextMeshProUGUI storyForm;
+    public TextMeshProUGUI endingForm;
     public Image blackScreen;
 
     public Image continueImage;
@@ -20,6 +22,7 @@ public class TextRendererManager : MonoBehaviour
     public List<TextAsset> herculesBadText = new List<TextAsset>();
 
     public List<TextAsset> pickupText = new List<TextAsset>();
+    public List<TextAsset> endingText = new List<TextAsset>();
     
 
     bool isTextDisplayed = false;
@@ -43,32 +46,66 @@ public class TextRendererManager : MonoBehaviour
 
     public void InitDialogScene()
     {
-        //GameController.instance.playerHud.SetActive(false);
+        GameController.instance.playerHud.SetActive(false);
         textCanvas.enabled = true;
         ShowContinue();
     }
 
     public void EndDialogScene()
     {
-        textCanvas.enabled = false;
+        //textCanvas.enabled = false;
         HideContinue();
-        //GameController.instance.playerHud.SetActive(true);
+        GameController.instance.playerHud.SetActive(true);
     }
 
     public void SetPickupText(string name)
     {
-        textCanvas.enabled = false;
-        textCanvas.enabled = true;
+        
         foreach (TextAsset text in pickupText)
         {
             if (text.name.Contains(name))
             {
-                RenderText(text.text, 5, 1);
+                StopAllCoroutines();
+                RenderText(text.text, 6, 1);
+                
                 return;
             }
         }
 
-        
+    }
+
+    public void ResetPickupText()
+    {
+        StopAllCoroutines();
+        storyForm.text = "";
+        Canvas.ForceUpdateCanvases();
+        storyForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = false;
+        storyForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = true;
+
+    }
+
+    public void SetEndingText(string name)
+    {
+        foreach (TextAsset text in endingText)
+        {
+            if (text.name.Contains(name))
+            {
+                StopAllCoroutines();
+                RenderText(text.text, 6, 2);
+
+                return;
+            }
+        }
+    }
+
+    public void ResetEndingText()
+    {
+        StopAllCoroutines();
+        endingForm.text = "";
+        Canvas.ForceUpdateCanvases();
+        endingForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = false;
+        endingForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = true;
+
     }
 
     public void ShowContinue()
@@ -181,7 +218,7 @@ public class TextRendererManager : MonoBehaviour
 
     IEnumerator DelayBlackeningAndRenderMultipleTypedText(List<string> multipleText, float delayTime, float textDuration, float blackScreenDuration)
     {
-
+        GameController.instance.player.GetComponent<PlayerMovement>().enabled = false;
         int timeSteps = (int)(blackScreenDuration / delayTime);
         //time goes from 0->timesteps
         //a goes from 0-1
@@ -193,6 +230,8 @@ public class TextRendererManager : MonoBehaviour
         }
 
         blackScreen.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+
+        
 
         RenderMultipleTypedText(multipleText, textDuration);
 
@@ -210,13 +249,28 @@ public class TextRendererManager : MonoBehaviour
         TextMeshProUGUI dynamicTextForm = null;
 
         if (type == 0) dynamicTextForm = textForm;
-        else dynamicTextForm = storyForm;
+        else if (type == 1) dynamicTextForm = storyForm;
+        else dynamicTextForm = endingForm;
 
         dynamicTextForm.horizontalAlignment = HorizontalAlignmentOptions.Center;
         dynamicTextForm.text = text;
+
+        Canvas.ForceUpdateCanvases();
+        dynamicTextForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = false;
+        dynamicTextForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = true;
+
+
         yield return new WaitForSeconds(duration);
         dynamicTextForm.text = "";
         dynamicTextForm.horizontalAlignment = HorizontalAlignmentOptions.Left;
+
+        Canvas.ForceUpdateCanvases();
+        dynamicTextForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = false;
+        dynamicTextForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = true;
+
+
+
+
     }
 
     
@@ -230,9 +284,10 @@ public class TextRendererManager : MonoBehaviour
     IEnumerator DelayTyping(string text, float delayTime, float duration,int type=0)
     {
 
-        TextMeshProUGUI dynamicTextForm = null; ;
+        TextMeshProUGUI dynamicTextForm = null;
         if (type == 0) dynamicTextForm = textForm;
-        else dynamicTextForm = storyForm;
+        else if (type == 1) dynamicTextForm = storyForm;
+        else dynamicTextForm = endingForm;
 
         dynamicTextForm.text = "";
         Debug.Log("Typing");
@@ -253,7 +308,8 @@ public class TextRendererManager : MonoBehaviour
         InitDialogScene();
         TextMeshProUGUI dynamicTextForm = null; ;
         if (type == 0) dynamicTextForm = textForm;
-        else dynamicTextForm = storyForm;
+        else if (type == 1) dynamicTextForm = storyForm;
+        else dynamicTextForm = endingForm;
 
         for (int i = 0; i < multipleText.Count; i++)
         {
@@ -283,6 +339,10 @@ public class TextRendererManager : MonoBehaviour
             }
             
         }
+
+        blackScreen.color = new Color(0,0,0,0);
+        dynamicTextForm.text = "";
+        GameController.instance.player.GetComponent<PlayerMovement>().enabled = true;
 
         EndDialogScene();
     }

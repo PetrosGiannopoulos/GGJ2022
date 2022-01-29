@@ -18,6 +18,7 @@ namespace GGJ.CK
 
         GameController gameController;
         public DialogUI dialogUI;
+        
         public enum TYPE
         {
             UNSPECIFIED,
@@ -137,6 +138,9 @@ namespace GGJ.CK
                     {
                         TextRendererManager.instance.InitHerculesStatueBadText();
                     }
+
+                    gameController.blockingPuzzle.SetActive(false);
+                    gameController.blockingStatue.SetActive(true);
                     Destroy(gameObject, 0.1f);
                     break;
                 case USE.COLLECT:
@@ -212,19 +216,19 @@ namespace GGJ.CK
                             GameObject.Find("TherapistGuy").GetComponent<Animator>().Play("Talking");
                             GameObject.Find("LyingDownGuy").GetComponent<Animator>().Play("Sit");
                             
-                            StartCoroutine(AnimationDoF(2f,100f));
+                            StartCoroutine(AnimationDoF(2f,100f,1));
                             break;
                         case GameController.ENDING.GOODENDING2:
                             Debug.Log("GOOD ENDING 2 END GAME !!");
                             CameraManager.instance.EnableCamera("GoodEnding2Camera");
                             CameraManager.instance.GetCameraObject("GoodEnding2Camera").GetComponent<Animator>().Play("GoodEnding2CameraAnimation");
                             GameObject.Find("WakeUpGuy").GetComponent<Animator>().Play("WakeUp");
-                            StartCoroutine(AnimationDoF(4f,100f));
+                            StartCoroutine(AnimationDoF(4f,100f,2));
                             break;
                         case GameController.ENDING.BADENDING1:
                             Debug.Log("BAD ENDING 1 END GAME !!");
                             CameraManager.instance.EnableCamera("BadEnding1Camera");
-                            StartCoroutine(AnimationDoF(2f,100f));
+                            StartCoroutine(AnimationDoF(2f,100f,3));
 
                             break;
                         case GameController.ENDING.BADENDING2:
@@ -234,7 +238,7 @@ namespace GGJ.CK
                             GameObject fallingGuy = GameObject.Find("FallingGuy");
                             fallingGuy.GetComponent<Rigidbody>().isKinematic = false;
                             //StartCoroutine(DelayFall(0.6f));
-                            StartCoroutine(AnimationDoF(2f,100f));
+                            StartCoroutine(AnimationDoF(2f,100f,4));
 
                             break;
                     }
@@ -243,7 +247,7 @@ namespace GGJ.CK
             }
         }
 
-        IEnumerator AnimationDoF(float delayTime, float endValue)
+        IEnumerator AnimationDoF(float delayTime, float endValue, int endingNum)
         {
 
             yield return new WaitForSeconds(delayTime);
@@ -266,6 +270,23 @@ namespace GGJ.CK
                 value += step;
                 dof.focalLength.value = value;
                 yield return new WaitForSeconds(0.02f);
+            }
+
+            switch (endingNum)
+            {
+                case 1:
+
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+
+                    TextRendererManager.instance.SetEndingText("Ending4");
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -342,7 +363,6 @@ namespace GGJ.CK
             {
                 LocationManager.instance.garageRoomUnlocked = true;
             }
-
 
             if(sanityModifier!=0)Destroy(gameObject, 0.1f);
 
@@ -464,6 +484,67 @@ namespace GGJ.CK
             GameObject parentObj = gameObject.transform.parent.gameObject;
 
             TextRendererManager.instance.SetPickupText(parentObj.name);
+            
+            if(parentObj.name.Equals("DeadBodyCovered") && dialogChoices.Count == 3)
+            {
+                TextRendererManager.instance.SetPickupText("DeadBodyCovered31");
+            }
+            else if(parentObj.name.Equals("DeadBodyCovered") && dialogChoices.Count == 4)
+            {
+                TextRendererManager.instance.SetPickupText("DeadBodyCovered32");
+            }
+
+            if (parentObj.name.Equals("Doll"))
+            {
+                GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                {
+                    TextRendererManager.instance.SetPickupText("Doll31");
+                }
+                else if(deadbody.GetComponent<InteractableClass>().dialogChoices.Count==4)
+                {
+                    TextRendererManager.instance.SetPickupText("Doll32");
+                }
+            }
+
+            if (parentObj.name.Equals("Drugs"))
+            {
+                GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                {
+                    TextRendererManager.instance.SetPickupText("Drugs31");
+                }
+                else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                {
+                    TextRendererManager.instance.SetPickupText("Drugs32");
+                }
+            }
+
+            if (parentObj.name.Equals("Hand-Cuffs"))
+            {
+                GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                {
+                    TextRendererManager.instance.SetPickupText("HandCuffs31");
+                }
+                else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                {
+                    TextRendererManager.instance.SetPickupText("HandCuffs32");
+                }
+            }
+
+            if (parentObj.name.Equals("MoneyBriefcase"))
+            {
+                GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                {
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
+                }
+                else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                {
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
+                }
+            }
 
         }
         protected void PlayOneShot(AudioClip sfx)

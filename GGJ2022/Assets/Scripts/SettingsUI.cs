@@ -11,6 +11,7 @@ public class SettingsUI : MonoBehaviour
     public Canvas canvas;
     public Button mainMenuButton;
     public Button quitButton;
+    public CodeBoard codeBoard;
 
     int selection = 0;
     // Start is called before the first frame update
@@ -44,7 +45,7 @@ public class SettingsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && codeBoard.interacting==false)
         {
             ToggleCanvas();
         }
