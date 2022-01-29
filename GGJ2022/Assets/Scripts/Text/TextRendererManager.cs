@@ -63,7 +63,7 @@ public class TextRendererManager : MonoBehaviour
         
         foreach (TextAsset text in pickupText)
         {
-            if (text.name.Contains(name))
+            if (text.name.Equals(name))
             {
                 StopAllCoroutines();
                 RenderText(text.text, 6, 1);

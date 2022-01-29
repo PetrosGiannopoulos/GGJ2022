@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
 
     public static GameController instance;
     public Volume volume;
+    public bool garageIsGood = false;
     public GameObject blockingPuzzle;
     public GameObject blockingStatue;
     public enum ENDING
@@ -125,13 +126,11 @@ public class GameController : MonoBehaviour
     {
         if (!willReturnToMuseum)
         {
-            Debug.Log("Tha paei allou");
             museumPlayerTransform.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
             return teleportLocations[nextRoomIndex - 1];
         }
         else
         {
-            Debug.Log("Tha girisei mouseio");
             returnToMuseum();
             return museumPlayerTransform;
         }
@@ -175,6 +174,7 @@ public class GameController : MonoBehaviour
             if (StorySanity.instance.GetStorySanity() >=60)
             {
                 //garage good scenario 3.1
+                garageIsGood = true;
                 GarageGoodScenario();
             }
             else

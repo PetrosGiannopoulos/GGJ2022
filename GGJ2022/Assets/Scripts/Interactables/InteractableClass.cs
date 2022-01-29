@@ -496,51 +496,88 @@ namespace GGJ.CK
 
             if (parentObj.name.Equals("Doll"))
             {
-                GameObject deadbody = GameObject.Find("DeadBodyCovered");
-                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                //if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //{
+                //    TextRendererManager.instance.SetPickupText("Doll31");
+                //}
+                //else if(deadbody.GetComponent<InteractableClass>().dialogChoices.Count==4)
+                //{
+                //    TextRendererManager.instance.SetPickupText("Doll32");
+                //}
+
+                if (GameController.instance.garageIsGood)
                 {
-                    TextRendererManager.instance.SetPickupText("Doll31");
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
                 }
-                else if(deadbody.GetComponent<InteractableClass>().dialogChoices.Count==4)
+                else
                 {
-                    TextRendererManager.instance.SetPickupText("Doll32");
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
                 }
             }
 
             if (parentObj.name.Equals("Drugs"))
             {
-                GameObject deadbody = GameObject.Find("DeadBodyCovered");
-                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                //if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //{
+                //    TextRendererManager.instance.SetPickupText("Drugs31");
+                //}
+                //else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                //{
+                //    TextRendererManager.instance.SetPickupText("Drugs32");
+                //}
+
+                if (GameController.instance.garageIsGood)
                 {
-                    TextRendererManager.instance.SetPickupText("Drugs31");
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
                 }
-                else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                else
                 {
-                    TextRendererManager.instance.SetPickupText("Drugs32");
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
                 }
             }
 
             if (parentObj.name.Equals("Hand-Cuffs"))
             {
-                GameObject deadbody = GameObject.Find("DeadBodyCovered");
-                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                //if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //{
+                //    TextRendererManager.instance.SetPickupText("HandCuffs31");
+                //}
+                //else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                //{
+                //    TextRendererManager.instance.SetPickupText("HandCuffs32");
+                //}
+
+                if (GameController.instance.garageIsGood)
                 {
-                    TextRendererManager.instance.SetPickupText("HandCuffs31");
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
                 }
-                else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                else
                 {
-                    TextRendererManager.instance.SetPickupText("HandCuffs32");
+                    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
                 }
             }
 
             if (parentObj.name.Equals("MoneyBriefcase"))
             {
-                GameObject deadbody = GameObject.Find("DeadBodyCovered");
-                if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //GameObject deadbody = GameObject.Find("DeadBodyCovered");
+                //if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 3)
+                //{
+                //    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
+                //}
+                //else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                //{
+                //    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
+                //}
+
+                
+                if (GameController.instance.garageIsGood)
                 {
                     TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
                 }
-                else if (deadbody.GetComponent<InteractableClass>().dialogChoices.Count == 4)
+                else
                 {
                     TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
                 }
