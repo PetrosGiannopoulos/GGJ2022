@@ -161,12 +161,20 @@ public class DialogUI : MonoBehaviour
         if (currentGameObjectName == "PhoneClean" && selectionIndex == 0)
         {
             StorySanity.instance.AddSanityPoints(-10);
+
+            TextRendererManager.instance.SetPickupText("PhoneCleanAnswer");
+
             DestroyInteraction();
+
+
 
         }
         else if (currentGameObjectName == "PhoneClean" && selectionIndex == 1)
         {
             StorySanity.instance.AddSanityPoints(5);
+
+            TextRendererManager.instance.SetPickupText("PhoneCleanAnswer");
+
             DestroyInteraction();
         }
 

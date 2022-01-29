@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
 
     public static GameController instance;
     public Volume volume;
+    public GameObject blockingPuzzle;
+    public GameObject blockingStatue;
     public enum ENDING
     {
         GOODENDING1,

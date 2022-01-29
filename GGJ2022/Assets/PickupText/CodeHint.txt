@@ -1,0 +1,3 @@
+Type numbers using keyboard.
+Press Enter to send code.
+Press Escape to clear code.

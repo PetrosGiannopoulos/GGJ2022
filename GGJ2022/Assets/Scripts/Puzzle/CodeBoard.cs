@@ -11,12 +11,13 @@ public class CodeBoard : MonoBehaviour
 
     private int passCode = 516794;
 
-    private bool interacting = false;
+    public bool interacting = false;
     List<KeyCode> numberKeyCodes = new List<KeyCode>();
     public GameObject playerObj;
     private float safeDist = 3f;
     public GameObject portalVFXPrefab;
     GameObject portalVFX;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -57,11 +58,16 @@ public class CodeBoard : MonoBehaviour
         {
             interacting = true;
             transform.parent.gameObject.GetComponent<Outline>().enabled = true;
+            TextRendererManager.instance.SetPickupText("CodeHint");
         }
         else
         {
-            interacting = false;
+           
             transform.parent.gameObject.GetComponent<Outline>().enabled = false;
+            if(interacting)TextRendererManager.instance.ResetPickupText();
+
+            interacting = false;
+
         }
     }
 
