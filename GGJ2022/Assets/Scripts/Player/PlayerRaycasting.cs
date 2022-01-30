@@ -200,6 +200,7 @@ namespace GGJ.CK
             }//close panel
 
 
+            
             if (!playerMovement.enabled)//holding readable item
             {
                 

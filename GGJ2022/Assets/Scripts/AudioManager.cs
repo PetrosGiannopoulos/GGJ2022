@@ -68,6 +68,26 @@ namespace GGJ.CK
 
         }
 
+        public void StopCurrent()
+        {
+            Sound[] s_ = Array.FindAll<Sound>(sounds, sound => sound.source.isPlaying);
+            //Sound s = Array.Find(sounds, sound => sound.source.isPlaying);
+            foreach(Sound s in s_)
+            {
+                if (s == null)
+                {
+                    Debug.Log("Nothing is Playing");
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    Stop(s.name);
+
+                }
+            }
+            
+        }
+
         public void Stop(string name)
         {
             Sound s = Array.Find(sounds , sound => sound.name == name);

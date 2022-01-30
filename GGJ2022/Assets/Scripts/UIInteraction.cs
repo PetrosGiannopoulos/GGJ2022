@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GGJ.CK;
 
 public class UIInteraction : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class UIInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        AudioManager.instance.StopCurrent();
+        AudioManager.instance.PlayFadeIn("MainTheme");
     }
 
     public void StartGame()

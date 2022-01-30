@@ -66,7 +66,18 @@ public class SettingsUI : MonoBehaviour
 
         if(canvas.enabled && Input.GetKeyDown(KeyCode.Return))
         {
-            if (selection == 0) GoToMainMenu();
+            Time.timeScale = 1f;
+            if (selection == 0)
+            {
+                Destroy(TextRendererManager.instance.gameObject);
+                Destroy(CameraManager.instance.gameObject);
+                Destroy(StorySanity.instance.gameObject);
+                Destroy(LocationManager.instance.gameObject);
+                Destroy(GameController.instance.gameObject);
+
+                AudioManager.instance.StopCurrent();
+                GoToMainMenu();
+            }
             else QuitGame();
         }
     }

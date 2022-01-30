@@ -241,6 +241,8 @@ public class GameController : MonoBehaviour
     {
         if (name.Equals("Room1Door"))
         {
+            AudioManager.instance.StopCurrent();
+            AudioManager.instance.PlayFadeIn("MainTheme");
             if (LocationManager.instance.defaultRoom1) StorySanity.instance.AddSanityPoints(-1);
             //Exiting Room 1
             if (StorySanity.instance.GetStorySanity() > 45)
@@ -318,14 +320,20 @@ public class GameController : MonoBehaviour
         }
         else if (name.Equals("Paint1"))
         {
+            AudioManager.instance.StopCurrent();
+            AudioManager.instance.PlayFadeIn("MusicBoxChildRoom");
             player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom1");
         }
         else if (name.Equals("Paint2"))
         {
+            AudioManager.instance.StopCurrent();
+            AudioManager.instance.PlayFadeIn("MainTheme");
             player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom2");
         }
         else if (name.Equals("Paint3"))
         {
+            AudioManager.instance.StopCurrent();
+            AudioManager.instance.PlayFadeIn("MainTheme");
             player.transform.position = LocationManager.instance.GetLocationPos("SpawnPointRoom3");
         }
     }

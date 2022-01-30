@@ -561,6 +561,116 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273822167}
   m_CullTransparentMesh: 1
+--- !u!1 &590072363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 590072365}
+  - component: {fileID: 590072364}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &590072364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590072363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 595203f6b447ec94abbfd734d6887561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: LeftFoot
+    clip: {fileID: 8300000, guid: c8255e60cab35fd479d4ac7c12229d5e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 589d5293adb4e1c4b9ca1726f14d67fb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ArgueDialog
+    clip: {fileID: 8300000, guid: 97b6ad6fc5f06c74d8edd076fd9a9719, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: MusicBoxChildRoom
+    clip: {fileID: 8300000, guid: 321ff913ca0ff75479ab8610fd126c4e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: HerculesGood
+    clip: {fileID: 8300000, guid: 203063e0693158043ab5f34603f0d4d0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HerculesBad
+    clip: {fileID: 8300000, guid: bbad607111feee649a11671b7b832595, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ending4
+    clip: {fileID: 8300000, guid: 0ce56c09629a44a46bfcccfd74745c46, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ending1
+    clip: {fileID: 8300000, guid: e690a8aab8bbf3b4581f1e8e074f358c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ending2
+    clip: {fileID: 8300000, guid: c94310bf79e18e24d8849be14d10c9e8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ending3
+    clip: {fileID: 8300000, guid: ed5574a6a002ae142ad3d2c0e4ddb1e5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lucifer
+    clip: {fileID: 8300000, guid: c6dc3f9f2d9e5294ea59c417c8125060, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &590072365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590072363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654402934
 GameObject:
   m_ObjectHideFlags: 0
