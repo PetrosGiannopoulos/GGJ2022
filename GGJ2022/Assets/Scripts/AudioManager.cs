@@ -82,6 +82,7 @@ namespace GGJ.CK
                 {
                     StopAllCoroutines();
                     Stop(s.name);
+                    //AbruptStop(s.name);
 
                 }
             }

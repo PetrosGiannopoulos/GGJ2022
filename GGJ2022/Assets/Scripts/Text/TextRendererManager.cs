@@ -220,6 +220,7 @@ public class TextRendererManager : MonoBehaviour
     IEnumerator DelayBlackeningAndRenderMultipleTypedText(List<string> multipleText, float delayTime, float textDuration, float blackScreenDuration)
     {
         GameController.instance.player.GetComponent<PlayerMovement>().enabled = false;
+        AudioManager.instance.AbruptStop("LeftFoot");
         int timeSteps = (int)(blackScreenDuration / delayTime);
         //time goes from 0->timesteps
         //a goes from 0-1

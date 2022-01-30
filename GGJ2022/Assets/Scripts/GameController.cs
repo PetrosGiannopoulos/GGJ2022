@@ -60,13 +60,16 @@ public class GameController : MonoBehaviour
         objectDestroyed = false;
         sanityMeter = 50;
 
-        StartCoroutine(delayTransfer());
+        //StartCoroutine(delayTransfer());
 
         VolumeProfile profile = GameController.instance.volume.sharedProfile;
         DepthOfField dof;
         profile.TryGet(out dof);
 
         dof.focalLength.value = 1f;
+
+        AudioManager.instance.StopCurrent();
+        AudioManager.instance.PlayFadeIn("MainTheme");
     }
 
     IEnumerator delayTransfer()

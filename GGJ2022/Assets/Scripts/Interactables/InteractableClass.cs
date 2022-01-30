@@ -130,6 +130,7 @@ namespace GGJ.CK
                 case USE.SINGLE:
                     //Do nothing in here
                     Debug.Log("#Interactable# Single Use !!");
+                    
                     AudioManager.instance.StopCurrent();
                     if (StorySanity.instance.GetStorySanity() >= 50)
                     {
@@ -295,7 +296,7 @@ namespace GGJ.CK
                 case 4:
                     AudioManager.instance.StopCurrent();
                     AudioManager.instance.PlayFadeIn("Ending4");
-                    TextRendererManager.instance.SetEndingText("Ending4",30);
+                    TextRendererManager.instance.SetEndingText("Ending4",40);
                     break;
                 default:
                     break;

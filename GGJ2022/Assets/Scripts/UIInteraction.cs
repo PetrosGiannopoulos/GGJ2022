@@ -13,7 +13,7 @@ public class UIInteraction : MonoBehaviour
     void Start()
     {
         AudioManager.instance.StopCurrent();
-        AudioManager.instance.PlayFadeIn("MainTheme");
+        AudioManager.instance.PlayFadeIn("Lucifer");
     }
 
     public void StartGame()
