@@ -130,12 +130,16 @@ namespace GGJ.CK
                 case USE.SINGLE:
                     //Do nothing in here
                     Debug.Log("#Interactable# Single Use !!");
+                    
+                    AudioManager.instance.StopCurrent();
                     if (StorySanity.instance.GetStorySanity() >= 50)
                     {
+                        AudioManager.instance.PlayFadeIn("HerculesGood");
                         TextRendererManager.instance.InitHerculesStatueGoodText();
                     }
                     else
                     {
+                        AudioManager.instance.PlayFadeIn("HerculesBad");
                         TextRendererManager.instance.InitHerculesStatueBadText();
                     }
 
@@ -192,7 +196,7 @@ namespace GGJ.CK
                             break;
                     }
 
-                    if (!willReturnToMuseum)
+                    /*if (!willReturnToMuseum)
                     {
                         AudioManager.instance.Stop("MainTheme");
                         AudioManager.instance.PlayFadeIn(gameController.songs[num]);
@@ -201,7 +205,7 @@ namespace GGJ.CK
                     {
                         AudioManager.instance.Stop(gameController.songs[num]);
                         AudioManager.instance.PlayFadeIn("MainTheme");
-                    }
+                    }*/
                     //gameController.TeleportPlayer(num);
                     gameController.TeleportPlayer(itemName);
                     Destroy(this);
@@ -275,15 +279,24 @@ namespace GGJ.CK
             switch (endingNum)
             {
                 case 1:
-
+                    AudioManager.instance.StopCurrent();
+                    AudioManager.instance.PlayFadeIn("Ending1");
+                    TextRendererManager.instance.SetEndingText("Ending1",30);
                     break;
                 case 2:
+                    AudioManager.instance.StopCurrent();
+                    AudioManager.instance.PlayFadeIn("Ending2");
+                    TextRendererManager.instance.SetEndingText("Ending2",30);
                     break;
                 case 3:
+                    AudioManager.instance.StopCurrent();
+                    AudioManager.instance.PlayFadeIn("Ending3");
+                    TextRendererManager.instance.SetEndingText("Ending3",30);
                     break;
                 case 4:
-
-                    TextRendererManager.instance.SetEndingText("Ending4");
+                    AudioManager.instance.StopCurrent();
+                    AudioManager.instance.PlayFadeIn("Ending4");
+                    TextRendererManager.instance.SetEndingText("Ending4",40);
                     break;
                 default:
                     break;
@@ -508,11 +521,11 @@ namespace GGJ.CK
 
                 if (GameController.instance.garageIsGood)
                 {
-                    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
+                    TextRendererManager.instance.SetPickupText("Doll31");
                 }
                 else
                 {
-                    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
+                    TextRendererManager.instance.SetPickupText("Doll32");
                 }
             }
 
@@ -530,11 +543,11 @@ namespace GGJ.CK
 
                 if (GameController.instance.garageIsGood)
                 {
-                    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
+                    TextRendererManager.instance.SetPickupText("Drugs31");
                 }
                 else
                 {
-                    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
+                    TextRendererManager.instance.SetPickupText("Drugs32");
                 }
             }
 
@@ -552,11 +565,11 @@ namespace GGJ.CK
 
                 if (GameController.instance.garageIsGood)
                 {
-                    TextRendererManager.instance.SetPickupText("MoneyBriefcase31");
+                    TextRendererManager.instance.SetPickupText("HandCuffs31");
                 }
                 else
                 {
-                    TextRendererManager.instance.SetPickupText("MoneyBriefcase32");
+                    TextRendererManager.instance.SetPickupText("HandCuffs32");
                 }
             }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using GGJ.CK;
+using UnityEngine.SceneManagement;
 
 public class TextRendererManager : MonoBehaviour
 {
@@ -84,14 +85,14 @@ public class TextRendererManager : MonoBehaviour
 
     }
 
-    public void SetEndingText(string name)
+    public void SetEndingText(string name, float duration)
     {
         foreach (TextAsset text in endingText)
         {
             if (text.name.Contains(name))
             {
                 StopAllCoroutines();
-                RenderText(text.text, 6, 2);
+                RenderText(text.text, duration, 2);
 
                 return;
             }
@@ -219,6 +220,7 @@ public class TextRendererManager : MonoBehaviour
     IEnumerator DelayBlackeningAndRenderMultipleTypedText(List<string> multipleText, float delayTime, float textDuration, float blackScreenDuration)
     {
         GameController.instance.player.GetComponent<PlayerMovement>().enabled = false;
+        AudioManager.instance.AbruptStop("LeftFoot");
         int timeSteps = (int)(blackScreenDuration / delayTime);
         //time goes from 0->timesteps
         //a goes from 0-1
@@ -269,7 +271,10 @@ public class TextRendererManager : MonoBehaviour
         dynamicTextForm.gameObject.transform.parent.gameObject.GetComponent<VerticalLayoutGroup>().enabled = true;
 
 
-
+        if (type == 2)
+        {
+            SceneManager.LoadScene("CreditsScene");
+        }
 
     }
 
@@ -343,12 +348,14 @@ public class TextRendererManager : MonoBehaviour
         blackScreen.color = new Color(0,0,0,0);
         dynamicTextForm.text = "";
         GameController.instance.player.GetComponent<PlayerMovement>().enabled = true;
+        AudioManager.instance.StopCurrent();
+        AudioManager.instance.PlayFadeIn("MainTheme");
 
         EndDialogScene();
     }
 
     public void RenderMultipleTypedText(List<string> multipleText, float duration, int type=0)
     {
-        StartCoroutine(DelayMultipleTyping(multipleText, renderDelayTime,duration,type));
+        StartCoroutine(DelayMultipleTyping(multipleText, 0.08f,duration,type));
     }
 }

@@ -116,9 +116,9 @@ namespace GGJ.CK
 
             if (_controller.velocity.magnitude > 0.01f && !audioStep.isPlaying)
             {
-                audioStep.volume = Random.Range(0.6f, 1.0f);
+                /*audioStep.volume = Random.Range(0.6f, 1.0f);
                 audioStep.pitch = Random.Range(0.8f, 1.0f);
-                audioStep.Play();
+                audioStep.Play();*/
             }
 
             if (move.magnitude < 0.1f)
